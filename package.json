@@ -13,12 +13,26 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "ejs": "^3.1.10",
-    "express": "^4.17.1",
+    "express": "^4.21.2",
     "pg": "^8.7.1"
   },
   "devDependencies": {
     "jest": "^27.0.6",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.1.10",
     "supertest": "^6.1.3"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deborangueira/M2-Projeto_Pessoal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deborangueira/M2-Projeto_Pessoal/issues"
+  },
+  "homepage": "https://github.com/deborangueira/M2-Projeto_Pessoal#readme"
 }
