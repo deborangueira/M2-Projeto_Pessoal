@@ -3,6 +3,7 @@ const path = require('path');
 const { Pool } = require('pg');
 require('dotenv').config();
 
+//Se conecta ao banco de dados
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -15,7 +16,7 @@ const pool = new Pool({
 });
 
 const runSQLScript = async () => {
-  const filePath = path.join(__dirname, 'init.sql');
+  const filePath = path.join(__dirname, 'init.sql'); // O init.sql possui todas as migração que teremos
   const sql = fs.readFileSync(filePath, 'utf8');
 
   try {
