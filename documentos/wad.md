@@ -64,7 +64,7 @@ Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para g
 
 **1. Introdução**
 
-A plataforma foi desenvolvida utilizando três bancos de dados principais que armazenas informações sobre os usuários, as atividades e as categorias das quais as atividades são atribuídas. 
+A plataforma foi desenvolvida utilizando três bancos de dados principais que armazenam as informações sobre os usuários, as atividades e as categorias - com as quais as atividades são atribuídas. 
 
 **2. Diagrama Lógico do Banco de Dados**
 
