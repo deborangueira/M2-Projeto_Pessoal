@@ -12,7 +12,7 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades**.
+Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades**. A proposta tem como objetivo de auxiliar os usuários na organização de suas tarefas diárias, focando nas ferramentas mais essenciais para tal. Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição e prazo de conclusão. Tais atividades também podem ser categorizadas em diferentes áreas da vida, como acadêmica, saúde e vida pessoal, proporcionando uma visão clara e estruturada das suas responsabilidades em cada área. Por fim, é possível realizar a edição e exclusão de atividades, garantindo flexibilidade e controle para que os usuários mantenham seu planejamento sempre atualizado.
 
 ---
 
