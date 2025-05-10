@@ -1,9 +1,5 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
-## Simples
-
-#### Leunam Sousa de Jesus
-
 ## Sumário
 
 1. [Introdução](#c1)  
