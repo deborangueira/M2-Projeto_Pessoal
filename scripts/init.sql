@@ -16,8 +16,6 @@ CREATE TABLE IF NOT EXISTS categorias (
 -- criação da tabela de atividades
 CREATE TABLE IF NOT EXISTS atividades (
   id SERIAL PRIMARY KEY,
-  nome VARCHAR(50),
-  categoria VARCHAR(50),
   título VARCHAR(50) NOT NULL,
   descrissão TEXT,
   prazo TIMESTAMP,
