@@ -12,7 +12,7 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades**. A proposta tem como objetivo de auxiliar os usuários na organização de suas tarefas diárias, focando nas ferramentas mais essenciais para tal. Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição e prazo de conclusão. Tais atividades também podem ser categorizadas em diferentes áreas da vida, como acadêmica, saúde e vida pessoal, proporcionando uma visão clara e estruturada das suas responsabilidades em cada área. Por fim, é possível realizar a edição e exclusão de atividades, garantindo flexibilidade e controle para que os usuários mantenham seu planejamento sempre atualizado.
+Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades** para que os usuários tenham um maior controle de sua agenda, desde a organização ao acompanhamento do progresso dessas atividades diariamente, tendo como foco as ferramentas mais essenciais para tal. Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição e prazo de conclusão. Tais atividades também podem ser categorizadas em diferentes áreas da vida, como acadêmica, saúde e vida pessoal, proporcionando uma visão clara e estruturada das suas responsabilidades em cada área. Por fim, é possível realizar a edição e exclusão de atividades, garantindo flexibilidade e controle para que os usuários mantenham seu planejamento sempre atualizado.
 
 ---
 
@@ -64,7 +64,7 @@ Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para g
 
 **1. Introdução**
 
-A plataforma foi desenvolvida com o objetivo de gerenciar atividades das agendas de seus usuários, desde a organização ao acompanhamento do progresso desses compromissos.
+A plataforma foi desenvolvida utilizando três bancos de dados principais que armazenas informações sobre os usuários, as atividades e as categorias das quais as atividades são atribuídas. 
 
 **2. Diagrama Lógico do Banco de Dados**
 
