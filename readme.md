@@ -3,7 +3,7 @@
 Este projeto é um boilerplate básico para uma aplicação Node.js seguindo o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
 
 # Descrição do projeto
- O SmartTasks é um sistema web desenvolvido para gerenciar atividades, garantindo que seja feito de forma prática e organizada. Após o login, o usuário é direcionado para a tela principal e poderá ver sua lista completa de afazeres bem como adicionar novas atividades, edita-las ou remove-las. Ao criar atividades é possível adicionar informações detalhadas, incluindo título, descrição e data de conclusão esperada.
+ O SmartTasks é um sistema web desenvolvido para gerenciar atividades com o intuito de que esse processo seja feito de forma prática e organizada. Após o login, o usuário é direcionado para a tela principal e poderá ver sua lista completa de afazeres bem como adicionar novas atividades, edita-las ou remove-las. Ao criar atividades é possível adicionar informações detalhadas, incluindo título, descrição e data de conclusão esperada.
 
 As atividades podem ser categorizadas por diferentes áreas como: vida pessoal,  acadêmica e saúde  facilitando a organização e visualização. 
 
