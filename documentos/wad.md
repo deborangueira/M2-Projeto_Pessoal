@@ -62,15 +62,15 @@ Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para g
 
 ### 3.1. Modelagem do banco de dados
 
-1. Introdução
+**1. Introdução**
 
 A plataforma foi desenvolvida com o objetivo de gerenciar atividades das agendas de seus usuários, desde a organização ao acompanhamento do progresso desses compromissos.
 
-2. Diagrama Lógico do Banco de Dados
+**2. Diagrama Lógico do Banco de Dados**
 
 ![Diagrama Lógico do Banco de Dados](../assets/modelo-banco.png)
 
-3. Tabelas e Atributos
+**3. Tabelas e Atributos**
 
 **Usuário**
 - `id`: Identificador único do usuário (PK)
@@ -85,20 +85,20 @@ A plataforma foi desenvolvida com o objetivo de gerenciar atividades das agendas
 - `prioridade`: nível de importância em escala numérico
 - `concluído`: Icheck-box que indica quando foi concluída
 - `criado_em`: data de criação
-- `usuario_id`: FK para `usuarios`
-- `categoria_id`: FK para `categoria`  
+- `usuario_id`: FK para usuarios
+- `categoria_id`: FK para categoria` 
 
 **categorias**
 - `id`: Identificador único do usuário (PK)
 - `título_categoria`: nome da categoria
 - `descrissão`: detalhamento para entender o que ela inclui.
 
-4. Cardinalidade das Relações
+**4. Cardinalidade das Relações**
  
 - **Usuário → Atividades**: Um usuário pode estar associada a várias atividades **(1:N)**. 
 - **Atividades → Categoria**: Uma atividades só está relacionada a uma categoria 1:1  
 
-5. Modelo Físico – Schema do Banco de Dados
+**5. Modelo Físico – Schema do Banco de Dados**
 
 Abaixo está todas as instruções SQL utilizadas para a criação do banco de dados:
 
