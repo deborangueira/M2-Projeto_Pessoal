@@ -37,23 +37,23 @@ projeto-eventos/
 
 ## Como executar o projeto localmente
 
-1. Escolha uma IDE (ex.:VS Code)
+**1. Escolha uma IDE (ex.:VS Code)**
 
-2. Clone o repositório para a sua máquina
+**2. Clone o repositório para a sua máquina**
 
 ```bash
 git clone https://github.com/deborangueira/M2-Projeto_Pessoal
 cd M2-Projeto_Pessoal
 ```
 
-3. No terminal, instale as dependências:
+**3. No terminal, instale as dependências:**
 ```bash
 npm init -y
 npm install 
 npm install express
 ```
 
-4. Ainda no terminal, inicie o servidor com:
+**4. Ainda no terminal, inicie o servidor com:**
 ```bash
 npm start ou node server.js
 ```
