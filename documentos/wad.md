@@ -95,8 +95,8 @@ A plataforma foi desenvolvida com o objetivo de gerenciar atividades das agendas
 
 **4. Cardinalidade das Relações**
  
-- **Usuário → Atividades**: Um usuário pode estar associada a várias atividades **(1:N)**. 
-- **Atividades → Categoria**: Uma atividades só está relacionada a uma categoria 1:1  
+- **Usuário → Atividades**: Um usuário pode estar associada a várias atividades **1:N**. 
+- **Atividades → Categoria**: Uma atividades só está relacionada a uma categoria **1:1** 
 
 **5. Modelo Físico – Schema do Banco de Dados**
 
