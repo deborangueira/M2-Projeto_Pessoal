@@ -26,7 +26,7 @@ projeto-eventos/
 │ │ └── style.css
 │ └── js/
 │ └── script.js
-├── .env.example # Variáveis de ambiente de exemplo
+├── .env # Variáveis de ambiente 
 ├── .gitignore
 ├── package.json
 ├── server.js # Ponto de entrada da aplicação
