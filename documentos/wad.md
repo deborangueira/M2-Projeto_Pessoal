@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS atividades (
 ![Wireframe-tela configurações e projetos](../assets/Wireframe_2.jpg)
 
 
-[`Clique`] (https://drive.google.com/drive/folders/1j3kOzpE68LY-0CXom_HhnzpNouGrxQz3?usp=sharing) aqui para acessar as imagens no drive
+[`Clique aqui`](https://drive.google.com/drive/folders/1j3kOzpE68LY-0CXom_HhnzpNouGrxQz3?usp=sharing)  para acessar as imagens no drive
 
 
 ### 3.4. Guia de estilos (Semana 05)
