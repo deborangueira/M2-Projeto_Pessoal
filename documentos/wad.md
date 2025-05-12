@@ -40,7 +40,7 @@ US03 | **Como** estudante, **quero** adicionar, editar e excluir atividades **pa
 ## Análise INVEST da User Story US01
 
 **User Story analisada:**  
-*US01 |  Como ..., quero ..., para que...*
+*US03 | Como estudante, quero adicionar, editar e excluir atividades para que eu possa me organizar com agilidade no dia a dia.*
 
 ### INVEST:
 
