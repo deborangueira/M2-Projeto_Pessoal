@@ -31,11 +31,11 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 ### 2.2. User Stories
 
 
-US01 |  **Como** ..., **quero** ..., **para que** ... 
+US01 | **Como** estagiário no banco, **quero** categorizar minhas atividades por áreas da vida **para que** eu possa visualizar a distribuição do meu tempo e evitar que eu me sobrecarregue
 
-US02 | **Como** ..., **quero** ..., **para que** ...   
+US02 | **Como** freelancer, **quero** separar minhas atividades por projetos **para que** eu possa conclui-las no prazo e acompanhar seu progresso com mais eficiência
 
-US03 | **Como** ..., **quero** ..., **para que** ...  
+US03 | **Como** estudante, **quero** adicionar, editar e excluir atividades **para que** eu possa me organizar com agilidade no dia a dia.
 
 ## Análise INVEST da User Story US01
 
