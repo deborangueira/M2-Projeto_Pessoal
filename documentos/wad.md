@@ -24,10 +24,9 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 
 ## <a name="c2"></a>2. Visão Geral da Aplicação Web
 
-### 2.1. Personas
+### 2.1. Persona
 
-![Image](/assets/[nome].png)
-![Image](/assets/[nome].png)
+![Image](/assets/persona.png)
 
 ### 2.2. User Stories
 
