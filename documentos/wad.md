@@ -158,7 +158,9 @@ CREATE TABLE IF NOT EXISTS atividades (
 
 ### 3.3. Wireframes (Semana 03)
 
-![Wireframe de baixa fidelidade](../assets/wireframe.jpg)
+![Wireframe de baixa fidelidade](../assets/wireframe_1.jpg)
+![Wireframe de baixa fidelidade](../assets/wireframe_2.jpg)
+
 
 ### 3.4. Guia de estilos (Semana 05)
 
