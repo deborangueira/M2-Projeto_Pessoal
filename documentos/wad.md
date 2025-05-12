@@ -31,11 +31,10 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 
 ### 2.2. User Stories
 
-| User Stories | Requisitos | Critérios de Aceite |
-|-|-|-|
-| US01 | **Como** ..., **quero** ..., **para que** ... | - Deve ser possível ... <br> - ...<br>- ... |
-| US02 | **Como** ..., **quero** ..., **para que** ... | - Deve ser possível ...<br> -...<br>- ... |
-| US03 | **Como** ..., **quero** ..., **para que** ... | - Deve ser possível...<br> - ...<br>- ... |
+
+US01:  **Como** ..., **quero** ..., **para que** ... 
+US02: **Como** ..., **quero** ..., **para que** ... 
+US03: **Como** ..., **quero** ..., **para que** ...
 
 ## Análise INVEST da User Story US01
 
