@@ -35,32 +35,32 @@ US01 | **Como** estagiário no banco, **quero** categorizar minhas atividades po
 
 US02 | **Como** freelancer, **quero** separar minhas atividades por projetos **para que** eu possa conclui-las no prazo e acompanhar seu progresso com mais eficiência
 
-US03 | **Como** estudante, **quero** adicionar, editar e excluir atividades **para que** eu possa me organizar com agilidade no dia a dia.
+US03 | **Como** estudante, **quero** cadastrar atividades e adicionar informações **para que** eu não perca de vista prazos e detalhes importantes sobre elas.
 
 ## Análise INVEST da User Story US01
 
 **User Story analisada:**  
-*US03 | Como estudante, quero adicionar, editar e excluir atividades para que eu possa me organizar com agilidade no dia a dia.*
+US03 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
 
 ### INVEST:
 
 - **I – Independente:**  
-  ...
+  Pode ser desenvolvida e testada separadamente de outras funcionalidades
 
 - **N – Negociável:**  
-    ...
+  Todos os campos que contém os detalhes das atividades podem ser editados conforme a necessidade do usuário (ex.: mudar a tag de categoria e aumentar a descrição).
 
 - **V – Valiosa:**  
-  ...
+  Essa é a função mais básica e fundamental do sistema, sendo a base para o funcionamento de todas as outras funções (como criar projetos).
 
 - **E – Estimável:**  
-  ...
+  O esforço e tempo que precisam ser investidos no desenvolvimento dessa função são facilmente estimáveis
 
 - **S – Pequena:**  
-  ...
+  Por consistir na determinação dos atributos da base de dados e em sua configuração, é uma funcionalidade viável de ser desenvolvida em pouco tempo.
 
 - **T – Testável:**  
-  ...
+  Sua validação é feita ao adicionar novas atividades na base de dados, podendo ser feita de forma rápida e simples.
 
 ---
 

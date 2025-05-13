@@ -1,4 +1,4 @@
-const { Pool } = require('pg');
+const { Pool } = require('pg'); // conecção com o banco de dados postgrees
 require('dotenv').config();
 
 const isSSL = process.env.DB_SSL === 'true';
