@@ -31,16 +31,16 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 ### 2.2. User Stories
 
 
-US01 | **Como** estagiário no banco, **quero** categorizar minhas atividades por áreas da vida **para que** eu possa visualizar a distribuição do meu tempo e evitar que eu me sobrecarregue
+US01 | **Como** estudante, **quero** cadastrar atividades e adicionar informações **para que** eu não perca de vista prazos e detalhes importantes sobre elas.
 
-US02 | **Como** freelancer, **quero** separar minhas atividades por projetos **para que** eu possa conclui-las no prazo e acompanhar seu progresso com mais eficiência
+US02 | **Como** estagiário no banco, **quero** categorizar minhas atividades por áreas da vida **para que** eu possa visualizar a distribuição do meu tempo e evitar que eu me sobrecarregue
 
-US03 | **Como** estudante, **quero** cadastrar atividades e adicionar informações **para que** eu não perca de vista prazos e detalhes importantes sobre elas.
+US03 | **Como** freelancer, **quero** separar minhas atividades por projetos **para que** eu possa conclui-las no prazo e acompanhar seu progresso com mais eficiência
 
 ## Análise INVEST da User Story US01
 
 **User Story analisada:**  
-US03 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
+US01 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
 
 - **I – Independente:** Pode ser desenvolvida e testada separadamente.
 
@@ -162,6 +162,17 @@ CREATE TABLE IF NOT EXISTS atividades (
 
 [`Clique aqui`](https://drive.google.com/drive/folders/1j3kOzpE68LY-0CXom_HhnzpNouGrxQz3?usp=sharing)  para acessar as imagens no drive
 
+Para o wireframe, foi esboçado as telas e funcionalidades que compõem a base principal da aplicação junto com algumas anotações.
+
+Nesse sentido, estão representadas (da esquerda para a direita e de cima para baixo) as telas de: (1) Log-in; (2) Cadastro; (3) Tela de atividades; (4) Tela de menu expandida; (5) Configuração-perfil; (5) Configuração-categorias; e, por fim,  (6) Tela de projetos. 
+
+As telas de Log-in e cadastro são simples e contam com campos para serem preenchidos com as informações de login do usuário. Elas também possuem atalhos umas para as outras, encontrado na frase que se encontra abaixo dos botões.
+
+A terceira tela contém uma lista de todas as atividades cadastradas pelo usuário e o detalhamento de cada uma, sendo elas: título, descrição, prazo, “to do”, prioridade, status, categoria e projeto a que pertence. Somado a isso, as opções de excluir e adicionar estão indicadas por ícones e, para editar, basta clicar no campo referente. A quarta tela por sua vez, conta com atalhos para outras telas e um resumo geral acerca do status das atividades. Ambas as telas se relacionam, portanto, com a primeira user story pois garantem uma visualização eficiente das informações e manipulação simples delas.
+
+Por outro lado, enquanto a tela de configurações-perfil permite a edição de informações pessoais de Log-in, a de configurações-Categorias permite que sejam criadas e editadas tags que servem como organizadores das atividades, podendo ser definidas de forma individual pelo usuário. Por conta disso, esta tela em específico se relaciona com a segunda user story.
+
+Por fim, a tela de projetos conta com uma série de cards expansíveis, esses cards são agrupamento de atividades feitos para que o usuário se organize por projeto e acompanhe seu progresso neles. Por exemplo, se o usuário tem uma aplicação web para desenvolver no seu trabalho, ele pode criar um projeto que agrupará todas as atividades relacionadas. Dessa forma, essa tela se relaciona com a primeira user story.
 
 ### 3.4. Guia de estilos (Semana 05)
 
