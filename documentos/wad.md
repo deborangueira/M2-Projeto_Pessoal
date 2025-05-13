@@ -44,23 +44,17 @@ US03 | Como estudante, quero cadastrar atividades e adicionar informações para
 
 ### INVEST:
 
-- **I – Independente:**  
-  Pode ser desenvolvida e testada separadamente de outras funcionalidades
+- **I – Independente:** Pode ser desenvolvida e testada separadamente de outras funcionalidades
 
-- **N – Negociável:**  
-  Todos os campos que contém os detalhes das atividades podem ser editados conforme a necessidade do usuário (ex.: mudar a tag de categoria e aumentar a descrição).
+- **N – Negociável:** Todos os campos que contém os detalhes das atividades podem ser editados conforme a necessidade do usuário (ex.: mudar a tag de categoria e aumentar a descrição).
 
-- **V – Valiosa:**  
-  Essa é a função mais básica e fundamental do sistema, sendo a base para o funcionamento de todas as outras funções (como criar projetos).
+- **V – Valiosa:** Essa é a função mais básica e fundamental do sistema, sendo a base para o funcionamento de todas as outras funções (como criar projetos).
 
-- **E – Estimável:**  
-  O esforço e tempo que precisam ser investidos no desenvolvimento dessa função são facilmente estimáveis
+- **E – Estimável:** O esforço e tempo que precisam ser investidos no desenvolvimento dessa função são facilmente estimáveis
 
-- **S – Pequena:**  
-  Por consistir na determinação dos atributos da base de dados e em sua configuração, é uma funcionalidade viável de ser desenvolvida em pouco tempo.
+- **S – Pequena:** Por consistir na determinação dos atributos da base de dados e em sua configuração, é uma funcionalidade viável de ser desenvolvida em pouco tempo.
 
-- **T – Testável:**  
-  Sua validação é feita ao adicionar novas atividades na base de dados, podendo ser feita de forma rápida e simples.
+- **T – Testável:** Sua validação é feita ao adicionar novas atividades na base de dados, podendo ser feita de forma rápida e simples.
 
 ---
 
