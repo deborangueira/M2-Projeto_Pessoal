@@ -42,13 +42,13 @@ US03 | **Como** estudante, **quero** cadastrar atividades e adicionar informaç�
 **User Story analisada:**  
 US03 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
 
-- **I – Independente:** Pode ser desenvolvida e testada separadamente de outras funcionalidades
+- **I – Independente:** Pode ser desenvolvida e testada separadamente.
 
 - **N – Negociável:** Todos os campos que contém os detalhes das atividades podem ser editados conforme a necessidade do usuário (ex.: mudar a tag de categoria e aumentar a descrição).
 
 - **V – Valiosa:** Essa é a função mais básica e fundamental do sistema, sendo a base para o funcionamento de todas as outras funções (como criar projetos).
 
-- **E – Estimável:** O esforço e tempo que precisam ser investidos no desenvolvimento dessa função são facilmente estimáveis
+- **E – Estimável:** O esforço e tempo que precisam ser investidos no desenvolvimento dessa função são facilmente estimáveis.
 
 - **S – Pequena:** Por consistir na determinação dos atributos da base de dados e em sua configuração, é uma funcionalidade viável de ser desenvolvida em pouco tempo.
 
