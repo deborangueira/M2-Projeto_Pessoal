@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS atividades (
 ![Wireframe-tela configurações e projetos](../assets/Wireframe_2.jpg)
 
 
-[`Clique aqui`](https://drive.google.com/drive/folders/1j3kOzpE68LY-0CXom_HhnzpNouGrxQz3?usp=sharing)  para acessar as imagens no drive
+*[`Clique aqui`](https://drive.google.com/drive/folders/1j3kOzpE68LY-0CXom_HhnzpNouGrxQz3?usp=sharing)  para acessar as imagens no drive*
 
 Para o wireframe, foi esboçado as telas e funcionalidades que compõem a base principal da aplicação junto com algumas anotações.
 
@@ -172,7 +172,7 @@ A terceira tela contém uma lista de todas as atividades cadastradas pelo usuár
 
 Por outro lado, enquanto a tela de configurações-perfil permite a edição de informações pessoais de Log-in, a de configurações-Categorias permite que sejam criadas e editadas tags que servem como organizadores das atividades, podendo ser definidas de forma individual pelo usuário. Por conta disso, esta tela em específico se relaciona com a segunda user story.
 
-Por fim, a tela de projetos conta com uma série de cards expansíveis, esses cards são agrupamento de atividades feitos para que o usuário se organize por projeto e acompanhe seu progresso neles. Por exemplo, se o usuário tem uma aplicação web para desenvolver no seu trabalho, ele pode criar um projeto que agrupará todas as atividades relacionadas. Dessa forma, essa tela se relaciona com a primeira user story.
+Por fim, a tela de projetos conta com uma série de cards expansíveis, esses cards são agrupamento de atividades feitos para que o usuário se organize por projeto e acompanhe seu progresso neles. Por exemplo, se o usuário tem uma aplicação web para desenvolver no seu trabalho, ele pode criar um projeto que agrupará todas as atividades relacionadas. Dessa forma, essa tela se relaciona com a terceira user story.
 
 ### 3.4. Guia de estilos (Semana 05)
 
