@@ -42,8 +42,6 @@ US03 | **Como** estudante, **quero** cadastrar atividades e adicionar informaç�
 **User Story analisada:**  
 US03 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
 
-### INVEST:
-
 - **I – Independente:** Pode ser desenvolvida e testada separadamente de outras funcionalidades
 
 - **N – Negociável:** Todos os campos que contém os detalhes das atividades podem ser editados conforme a necessidade do usuário (ex.: mudar a tag de categoria e aumentar a descrição).
