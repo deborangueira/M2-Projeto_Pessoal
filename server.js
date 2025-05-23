@@ -1,7 +1,7 @@
-require('dotenv').config();
+require('dotenv').config(); // importando o módulo dotenv chamando a função config para carregar as variáveis de ambiente do arquivo .env
 const express = require('express');
 const app = express();
-const db = require('./config/db');
+const db = require('./config/db'); // chama a minha database
 const path = require('path');
 
 app.set('view engine', 'ejs');
@@ -14,8 +14,11 @@ db.connect() // Conexão com o banco de dados
     app.use(express.json());
 
     const userRoutes = require('./routes/userRoutes');
-    app.use('/users', userRoutes);
-
+    app.use('/users', userRoutes); 
+/**
+    const tarefasRoutes = require('./routes/tarefasRoutes');
+    app.use('/tarefas', tarefasRoutes);
+ */
     const frontendRoutes = require('./routes/frontRoutes');
     app.use('/', frontendRoutes);
 
@@ -38,3 +41,11 @@ db.connect() // Conexão com o banco de dados
   .catch(err => {
     console.error('Erro ao conectar ao banco de dados:', err);
   });
+
+//Semana 5
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+// Middlewares
+app.use(cors());
+app.use(bodyParser.json());

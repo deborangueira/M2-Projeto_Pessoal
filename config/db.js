@@ -1,8 +1,11 @@
+
+
 const { Pool } = require('pg'); // conecção com o banco de dados postgrees
 require('dotenv').config();
 
-const isSSL = process.env.DB_SSL === 'true';
+const isSSL = process.env.DB_SSL === 'false';
 
+//Criando o pool de conexões
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,

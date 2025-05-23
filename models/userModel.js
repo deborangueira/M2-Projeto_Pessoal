@@ -2,12 +2,12 @@ const db = require('../config/db');
 
 class User {
   static async getAll() {
-    const result = await db.query('SELECT * FROM users');
+    const result = await db.query('SELECT * FROM usuario');
     return result.rows;
   }
 
   static async getById(id) {
-    const result = await db.query('SELECT * FROM users WHERE id = $1', [id]);
+    const result = await db.query('SELECT * FROM usuario WHERE id = $1', [id]);
     return result.rows[0];
   }
 
