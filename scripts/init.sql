@@ -49,4 +49,3 @@ CREATE TABLE IF NOT EXISTS atividades (
   FOREIGN KEY (id_projeto) REFERENCES projetos(id),
   FOREIGN KEY (id_subAtividade) REFERENCES subAtividades(id)
 );
-
