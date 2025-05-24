@@ -23,11 +23,11 @@ const getCategoryById = async (id) => {
 };
 
 // Função para criar um nova categoria
-const createCategory = async (titulo_categoria, descrissao) => {
+const createCategory = async (titulo_categoria, descricao) => {
   try {
     const result = await db.query(
-      'INSERT INTO categoria (titulo_categoria, descrissao) VALUES ($1, $2) RETURNING *',
-      [titulo_categoria, descrissao]
+      'INSERT INTO categoria (titulo_categoria, descricao) VALUES ($1, $2) RETURNING *',
+      [titulo_categoria, descricao]
     );
     return result.rows[0];
   } catch (error) {
@@ -36,11 +36,11 @@ const createCategory = async (titulo_categoria, descrissao) => {
 };
 
 // Função para atualizar uma categoria por ID
-const updateCategory = async (id, titulo_categoria, descrissao) => {
+const updateCategory = async (id, titulo_categoria, descricao) => {
   try {
     const result = await db.query(
-      'UPDATE categoria SET titulo_categoria = $1, descrissao = $2 WHERE id = $3 RETURNING *',
-      [titulo_categoria, descrissao, id]
+      'UPDATE categoria SET titulo_categoria = $1, descricao = $2 WHERE id = $3 RETURNING *',
+      [titulo_categoria, descricao, id]
     );
     return result.rows[0];
   } catch (error) {

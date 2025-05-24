@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 CREATE TABLE IF NOT EXISTS categoria (
   id SERIAL PRIMARY KEY,
   titulo_categoria VARCHAR(100) NOT NULL,
-  descrissao TEXT
+  descricao TEXT
 );
 
 -- ciaração da tabela de projetos
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS projetos (
 CREATE TABLE IF NOT EXISTS atividades (
   id SERIAL PRIMARY KEY,
   título VARCHAR(50) NOT NULL,
-  descrissão TEXT,
+  descricao TEXT,
   prazo TIMESTAMP,
   prioridade INTEGER,
   concluido BOOLEAN,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS atividades (
   id_categoria INT,
   id_projeto INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-  FOREIGN KEY (id_categoria) REFERENCES categorias(id),
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id),
   FOREIGN KEY (id_projeto) REFERENCES projetos(id)
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS atividades (
 CREATE TABLE IF NOT EXISTS subAtividades (
   id SERIAL PRIMARY KEY,
   titulo VARCHAR(50) NOT NULL,
-  descrissao TEXT,
+  descricao TEXT,
   prazo TIMESTAMP,
   prioridade INTEGER,
   concluido BOOLEAN,

@@ -4,8 +4,8 @@ const categoryService = require('../services/categoryService');
 
 const  getAllCategory = async (req, res) => {
   try {
-    const users = await categoryService.getAllCategory();
-    res.status(200).json(users);
+    const categories = await categoryService.getAllCategory();
+    res.status(200).json(categories);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -13,9 +13,9 @@ const  getAllCategory = async (req, res) => {
 
 const getCategoryById = async (req, res) => {
   try {
-    const user = await categoryService.getCategoryById(req.params.id);
-    if (user) {
-      res.status(200).json(user);
+    const category = await categoryService.getCategoryById(req.params.id);
+    if (category) {
+      res.status(200).json(category);
     } else {
       res.status(404).json({ error: 'Categoria não encontrada' });
     }
@@ -28,8 +28,8 @@ const getCategoryById = async (req, res) => {
 
 const createCategory = async (req, res) => {
   try {
-    const { titulo_categoria, descrissao } = req.body;
-    const newCategory = await categoryService.createCategory( titulo_categoria, descrissao);
+    const { titulo_categoria, descricao } = req.body;
+    const newCategory = await categoryService.createCategory( titulo_categoria, descricao);
     res.status(201).json(newCategory);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -38,10 +38,10 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   try {
-    const {titulo_categoria, descrissao} = req.body;
-    const updateCategory = await categoryService.updateCategory(req.params.id, titulo_categoria, descrissao);
-    if (updateCategory) {
-      res.status(200).json(updateCategory);
+    const {titulo_categoria, descricao} = req.body;
+    const updatedCategory = await categoryService.updateCategory(req.params.id, titulo_categoria, descricao);
+    if (updatedCategory) {
+      res.status(200).json(updatedCategory);
     } else {
       res.status(404).json({ error: 'Categoria não encontrada' });
     }
@@ -52,9 +52,9 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
   try {
-    const deleteCategory = await categoryService.deleteCategory(req.params.id);
-    if (deleteCategory) {
-      res.status(200).json(deleteCategory);
+    const deletedCategory = await categoryService.deleteCategory(req.params.id);
+    if (deletedCategory) {
+      res.status(200).json(deletedCategory);
     } else {
       res.status(404).json({ error: 'Categoria não encontrada' });
     }
