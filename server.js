@@ -18,6 +18,15 @@ db.connect() // Conexão com o banco de dados
 
     const categoryRoutes = require('./routes/categoryRoutes');
     app.use('/category', categoryRoutes);
+
+    const projectRoutes = require('./routes/projectRoutes');
+    app.use('/project', projectRoutes);
+
+    //const taskRoutes = require('./routes/taskRoutes');
+    //app.use('/task', taskRoutes);
+    
+    //const subtaskRoutes = require('./routes/subtaskRoutes');
+    //app.use('/subtask', subtaskRoutes);
  
     const frontendRoutes = require('./routes/frontRoutes');
     app.use('/', frontendRoutes);
