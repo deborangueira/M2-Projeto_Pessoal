@@ -15,10 +15,10 @@ db.connect() // Conexão com o banco de dados
 
     const userRoutes = require('./routes/userRoutes');
     app.use('/users', userRoutes); 
-/**
-    const tarefasRoutes = require('./routes/tarefasRoutes');
-    app.use('/tarefas', tarefasRoutes);
- */
+
+    const categoryRoutes = require('./routes/categoryRoutes');
+    app.use('/category', categoryRoutes);
+ 
     const frontendRoutes = require('./routes/frontRoutes');
     app.use('/', frontendRoutes);
 
