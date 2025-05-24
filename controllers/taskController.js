@@ -4,7 +4,7 @@ const taskService = require('../services/taskService');
 
 const  getAllTask = async (req, res) => {
   try {
-    const task = await taskService.getAlltask();
+    const task = await taskService.getAllTask();
     res.status(200).json(task);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -28,9 +28,8 @@ const getTaskById = async (req, res) => {
 
 const createTask = async (req, res) => {
   try {
-    const { título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto} = req.body;
-    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto
-);
+    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto} = req.body;
+    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto);
     res.status(201).json(newTask);
   } catch (error) {
     res.status(500).json({ error: error.message });

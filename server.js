@@ -25,8 +25,8 @@ db.connect() // Conexão com o banco de dados
     const taskRoutes = require('./routes/taskRoutes');
     app.use('/task', taskRoutes);
     
-    //const subtaskRoutes = require('./routes/subtaskRoutes');
-    //app.use('/subtask', subtaskRoutes);
+    const subtaskRoutes = require('./routes/subtaskRoutes');
+    app.use('/subtask', subtaskRoutes);
  
     const frontendRoutes = require('./routes/frontRoutes');
     app.use('/', frontendRoutes);
