@@ -26,7 +26,7 @@ const getTaskById = async (id) => {
 const createTask = async ( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto) => {
   try {
     const result = await db.query(
-      'INSERT INTO atividades (título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto) VALUES ($1, $2, $3, $4, $5, %6, $7, $8, $9) RETURNING *',
+      'INSERT INTO atividades (título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
       [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto]
     );
     return result.rows[0];

@@ -4,7 +4,7 @@ const taskService = require('../services/taskService');
 
 const  getAllTask = async (req, res) => {
   try {
-    const task = await tasktService.getAlltask();
+    const task = await taskService.getAlltask();
     res.status(200).json(task);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -53,7 +53,7 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   try {
-    const deletedTask = await tasktService.deleteTask(req.params.id);
+    const deletedTask = await taskService.deleteTask(req.params.id);
     if (deletedTask) {
       res.status(200).json(deletedTask);
     } else {
