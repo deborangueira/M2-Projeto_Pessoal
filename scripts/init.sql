@@ -1,5 +1,5 @@
 -- criação da tabela de  usuário
-CREATE TABLE IF NOT EXISTS usuario (
+CREATE TABLE IF NOT EXISTS usuario ( --user
   id SERIAL PRIMARY KEY,
   nome VARCHAR(50) NOT NULL,
   email VARCHAR(200),
@@ -7,21 +7,21 @@ CREATE TABLE IF NOT EXISTS usuario (
 );
 
 -- ciaração da tabela de categorias
-CREATE TABLE IF NOT EXISTS categoria (
+CREATE TABLE IF NOT EXISTS categoria ( --category
   id SERIAL PRIMARY KEY,
   titulo_categoria VARCHAR(100) NOT NULL,
   descricao TEXT
 );
 
 -- ciaração da tabela de projetos
-CREATE TABLE IF NOT EXISTS projetos (
+CREATE TABLE IF NOT EXISTS projetos ( --project
   id SERIAL PRIMARY KEY,
   titulo_projeto VARCHAR(100) NOT NULL,
   descrissao TEXT
 );
 
 -- criação da tabela de atividades
-CREATE TABLE IF NOT EXISTS atividades (
+CREATE TABLE IF NOT EXISTS atividades ( --task
   id SERIAL PRIMARY KEY,
   título VARCHAR(50) NOT NULL,
   descricao TEXT,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS atividades (
 );
 
 -- criação da tabela de subAtividades
-CREATE TABLE IF NOT EXISTS subAtividades (
+CREATE TABLE IF NOT EXISTS subAtividades ( --subtask
   id SERIAL PRIMARY KEY,
   titulo VARCHAR(50) NOT NULL,
   descricao TEXT,

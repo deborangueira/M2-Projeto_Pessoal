@@ -35,7 +35,7 @@ const createProject = async (titulo_projeto, descrissao) => {
   }
 };
 
-// Função para atualizar uma categoria por ID
+// Função para atualizar uma projetos por ID
 const updateProject = async (id, titulo_projeto, descrissao) => {
   try {
     const result = await db.query(
@@ -48,7 +48,7 @@ const updateProject = async (id, titulo_projeto, descrissao) => {
   }
 };
 
-// Função para deletar uma categoria por ID
+// Função para deletar uma projetos por ID
 const deleteProject = async (id) => {
   try {
     const result = await db.query('DELETE FROM projetos WHERE id = $1 RETURNING *', [id]);
