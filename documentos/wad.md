@@ -78,7 +78,7 @@ A plataforma foi desenvolvida utilizando três bancos de dados principais que ar
 **Atividades**
 - `id`: Identificador único (PK)
 - `título`: nome da atividade
-- `descrissão`: detalhamento sobre a atividade
+- `descricao`: detalhamento sobre a atividade
 - `prazo`: data em que deve ser concluída
 - `prioridade`: nível de importância em escala numérico
 - `concluído`: Icheck-box que indica quando foi concluída
@@ -86,10 +86,25 @@ A plataforma foi desenvolvida utilizando três bancos de dados principais que ar
 - `usuario_id`: FK para usuarios
 - `categoria_id`: FK para categoria` 
 
+**Sub-atividades**
+- `id`: Identificador único (PK)
+- `título`: nome da atividade
+- `descricao`: detalhamento sobre a atividade
+- `prazo`: data em que deve ser concluída
+- `prioridade`: nível de importância em escala numérico
+- `concluído`: Icheck-box que indica quando foi concluída
+- `criado_em`: data de criação
+- `subatividade_id`: FK para atividades
+
 **categorias**
 - `id`: Identificador único do usuário (PK)
 - `título_categoria`: nome da categoria
-- `descrissão`: detalhamento para entender o que ela inclui.
+- `descricao`: detalhamento para entender o que ela inclui.
+
+**projetos**
+- `id`: Identificador único do usuário (PK)
+- `titulo_projetos`: nome da categoria
+- `descricao`: detalhamento para entender o que ela inclui.
 
 **4. Cardinalidade das Relações**
  
@@ -102,31 +117,56 @@ Abaixo está todas as instruções SQL utilizadas para a criação do banco de d
 
 📄 **Arquivo .SQL com o schema:**  
 ```
-CREATE TABLE IF NOT EXISTS usuário (
+-- criação da tabela de  usuário
+CREATE TABLE IF NOT EXISTS usuario ( --user
   id SERIAL PRIMARY KEY,
   nome VARCHAR(50) NOT NULL,
   email VARCHAR(200),
   senha VARCHAR(200)
 );
 
-CREATE TABLE IF NOT EXISTS categorias (
+-- ciaração da tabela de categorias
+CREATE TABLE IF NOT EXISTS categoria ( --category
   id SERIAL PRIMARY KEY,
-  título_categoria VARCHAR(100) NOT NULL,
-  descrissão TEXT
+  titulo_categoria VARCHAR(100) NOT NULL,
+  descricao TEXT
 );
 
-CREATE TABLE IF NOT EXISTS atividades (
+-- ciaração da tabela de projetos
+CREATE TABLE IF NOT EXISTS projetos ( --project
+  id SERIAL PRIMARY KEY,
+  titulo_projeto VARCHAR(100) NOT NULL,
+  descrissao TEXT
+);
+
+-- criação da tabela de atividades
+CREATE TABLE IF NOT EXISTS atividades ( --task
   id SERIAL PRIMARY KEY,
   título VARCHAR(50) NOT NULL,
-  descrissão TEXT,
+  descricao TEXT,
   prazo TIMESTAMP,
   prioridade INTEGER,
   concluido BOOLEAN,
   criado_em TIMESTAMP,
-  id_usuário INT,
+  id_usuario INT,
   id_categoria INT,
-  FOREIGN KEY (id_usuário) REFERENCES usuário(id),
-  FOREIGN KEY (id_categoria) REFERENCES categorias(id)
+  id_projeto INT,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id),
+  FOREIGN KEY (id_projeto) REFERENCES projetos(id)
+);
+
+-- criação da tabela de subAtividades
+CREATE TABLE IF NOT EXISTS subAtividades ( --subtask
+  id SERIAL PRIMARY KEY,
+  titulo VARCHAR(50) NOT NULL,
+  descricao TEXT,
+  prazo TIMESTAMP,
+  prioridade INTEGER,
+  concluido BOOLEAN,
+  criado_em TIMESTAMP,
+  id_subAtividades INT,
+  FOREIGN KEY (id_subAtividades) REFERENCES atividades(id)
 );
 
 
