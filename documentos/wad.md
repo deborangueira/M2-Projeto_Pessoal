@@ -62,7 +62,7 @@ US01 | Como estudante, quero cadastrar atividades e adicionar informações para
 
 **1. Introdução**
 
-A plataforma foi desenvolvida utilizando três bancos de dados principais que armazenam as informações sobre os usuários, as atividades e as categorias - com as quais as atividades são atribuídas. 
+A plataforma foi desenvolvida utilizando cinco bancos de dados principais que armazenam as informações sobre os usuários, atividades, sub-atividades, projetos e as categorias. 
 
 **2. Diagrama Lógico do Banco de Dados**
 
@@ -108,8 +108,10 @@ A plataforma foi desenvolvida utilizando três bancos de dados principais que ar
 
 **4. Cardinalidade das Relações**
  
-- **Usuário → Atividades**: Um usuário pode estar associada a várias atividades **1:N**. 
-- **Atividades → Categoria**: Uma atividades só está relacionada a uma categoria **1:1** 
+- **Usuário → Atividades**: Um usuário pode ter várias atividades **1:N**. 
+- **Projetos → Atividades**: Um projeto pode conter várias atividades **1:N**
+- **Atividade → Subatividades**: Uma atividade pode conter várias sub-atividades **1:N**
+- **Atividades → Categoria**: Uma atividade pode está relacionada a uma categoria **1:1**.
 
 **5. Modelo Físico – Schema do Banco de Dados**
 
@@ -225,7 +227,55 @@ Por fim, a tela de projetos conta com uma série de cards expansíveis, esses ca
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+ #### Usuario
+
+| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
+| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/user`     | Criar um novo usuário      | Corpo JSON: `{ id, nome, email, senha }`                                                  |
+| GET    | `/user`     | Listar todos os usuários   | -                                                                                                                              |
+| GET    | `/user/:id` | Buscar usuário pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
+| PUT    | `/user/:id` | Atualizar dados do usuário identificando-o pelo ID | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ nome, email, senha }` |
+| DELETE | `/user/:id` | Deletar usuário pelo ID    | Parâmetro URL: `id`                                                                                                            |
+
+ #### categoria
+
+| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
+| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/category`     | Criar uma nova categoria      | Corpo JSON: `{ id, título_categoria, descricao }`                                                  |
+| GET    | `/category`     | Listar todas as categorias   | -                                                                                                                              |
+| GET    | `/category/:id` | Buscar categoria pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
+| PUT    | `/category/:id` | Atualizar dados da categoria | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título_categoria, descricao }` |
+| DELETE | `/category/:id` | Deletar categoria pelo ID    | Parâmetro URL: `id`  
+
+ #### projeto
+
+| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
+| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/project`     | Criar um novo projeto      | Corpo JSON: `{ id, titulo_projeto, descricao }`                                                  |
+| GET    | `/project`     | Listar todos os projetos   | -                                                                                                                              |
+| GET    | `/project/:id` | Buscar projeto pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
+| PUT    | `/project/:id` | Atualizar projeto do usuário | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ titulo_projeto, descricao }` |
+| DELETE | `/project/:id` | Deletar projeo pelo ID    | Parâmetro URL: `id`  
+
+ #### Atividades
+
+| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
+| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/task`     | Criar uma nova atividade      | Corpo JSON: `{ id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto }`                                                  |
+| GET    | `/task`     | Listar todas as atividades   | -                                                                                                                              |
+| GET    | `/task/:id` | Buscar atividade pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
+| PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto}` |
+| DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
+
+ #### sub-atividades
+
+| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
+| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/subtask`     | Criar uma nova sub-atividade      | Corpo JSON: `{ id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades }`                                                  |
+| GET    | `/subtask`     | Listar todas as sub-atividades   | -                                                                                                                              |
+| GET    | `/subtask/:id` | Buscar sub-atividade pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
+| PUT    | `/subtask/:id` | Atualizar dados das sub-atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades}` |
+| DELETE | `/subtask/:id` | Deletar sub-atividade pelo ID    | Parâmetro URL: `id`  
 
 ### 3.7 Interface e Navegação (Semana 07)
 

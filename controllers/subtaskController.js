@@ -38,7 +38,7 @@ const createSubtask = async (req, res) => {
 
 const updateSubtask = async (req, res) => {
   try {
-    const {id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades} = req.body;
+    const { titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades} = req.body;
     const updatedSubtask = await subtaskService.updateTask(req.params.id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades);
     if (updatedSubtask) {
       res.status(200).json(updatedSubtask);
