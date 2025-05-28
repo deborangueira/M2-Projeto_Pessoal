@@ -183,10 +183,61 @@ CREATE TABLE IF NOT EXISTS subAtividades ( --subtask
 ---
 
 ### 3.1.1 BD e Models (Semana 5)
-Foi implementado 5 models (services) conforme a estrutura definida no banco de dados PostgreSQL.
+Foi implementado 5 models (services) conforme a estrutura definida no banco de dados PostgreSQL.São eles:
+
+1. **User Service**
+   - Responsável pelo gerenciamento de usuários.
+   - Atributos: id, name, email e senha.
+   - Métodos principais:
+     - `getAllUsers`: Busca todos os usuários
+     - `getUserById`: busca usuário por ID
+     - `createUser`: Cria novo usuário
+     - `updateUser`: Atualiza dados do usuário
+     - `deleteUser`: Remove usuário do sistema
+
+2. **Category Service**
+   - Responsável pelo gerenciamento de categorias.
+   - Atributos: id, título e descrição.
+   - Métodos principais:
+     - `getAllCategory`: Busca todas as categorias
+     - `getCategoryById`: busca categoria por ID
+     - `createCategory`: Cria novo categoria
+     - `updateCategory`: Atualiza dados da categoria
+     - `deleteCategory`: Remove categoria do sistema
+
+3. **Project Service**
+   - Responsável pelo gerenciamento de projetos
+   - Atributos: id, título e descrição
+   - Métodos principais:
+     - `getAllProject`: Busca todas os projetos
+     - `getProjectById`: busca projeto por ID
+     - `createProject`: Cria novo projeto
+     - `updateProject`: Atualiza dados do projeto
+     - `deleteProject`: Remove projeto do sistema
+
+4. **Task Service**
+   - Responsável pelo gerenciamento de atividades
+   - Atributos: id, título, descrição, prazo, prioridade, concluido, criado_em, id_usuário, id_categoria, id_projeto.
+   - Métodos principais:
+     - `getAllTask`: Busca todas as atividades
+     - `getTaskById`: busca atividade por ID
+     - `createTask`: Cria nova atividade
+     - `updateTask`: Atualiza dados da atividade
+     - `deleteTask`: Remove atividade do sistema
+
+5. **Subtask Service**
+   - Responsável pelo gerenciamento de sub-atividades
+   - Atributos: id, título, descrição, prazo, prioridade, concluído, criado_em, id_subAtividades.
+   - Métodos principais:
+     - `getAllSubtask`: Busca todas as sub-atividades
+     - `getSubtaskById`: busca sub-atividades por ID
+     - `createSubtask`: Cria nova sub-atividades
+     - `updateSubtask`: Atualiza dados da ativsub-atividadesidade
+     - `deleteSubtask`: Remove sub-atividades do sistema
+
 ### 3.2. Arquitetura (Semana 5)
 
-A arquitetura MVC utilizada para essa aplicação foi implementada da seguinte maneira:
+Para essa aplicação, a arquitetura MVC foi implementada da seguinte maneira:
 
 ![Arquitetura MVC do Banco de Dados](../assets/diagrama%20de%20arquitetura.png)
 
