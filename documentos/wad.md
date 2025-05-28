@@ -183,11 +183,13 @@ CREATE TABLE IF NOT EXISTS subAtividades ( --subtask
 ---
 
 ### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
-
+Foi implementado 5 models (services) conforme a estrutura definida no banco de dados PostgreSQL.
 ### 3.2. Arquitetura (Semana 5)
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+A arquitetura MVC utilizada para essa aplicação foi implementada da seguinte maneira:
+
+![Arquitetura MVC do Banco de Dados](../assets/diagrama%20de%20arquitetura.png)
+
 
 **Instruções para criação do diagrama de arquitetura**  
 - **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
