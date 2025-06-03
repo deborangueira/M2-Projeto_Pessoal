@@ -57,4 +57,5 @@ const cors = require('cors');
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // LÊ JSON
+app.use(express.urlencoded({ extended: true })); // LÊ FORMS

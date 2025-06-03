@@ -5,15 +5,15 @@ const path = require('path');
 // Roteamento para páginas dinâmicas
 router.get('/', (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'Página Inicial',
-    content: path.join(__dirname, '../views/pages/page1')
+    pageTitle: 'Cadastre-se',
+    content: path.join(__dirname, '../views/pages/cadastro')
   });
 });
 
-router.get('/about', (req, res) => {
+router.get('/login', (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'Página Inicial',
-    content: path.join(__dirname, '../views/pages/page2')
+    pageTitle: 'Login no SmartTasks',
+    content: path.join(__dirname, '../views/pages/login')
   });
 });
 

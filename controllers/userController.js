@@ -29,6 +29,9 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
+    console.log(req.body)
+    console.log(req.params)
+    console.log(req.query)
     const newUser = await userService.createUser(nome, email, senha);
     res.status(201).json(newUser);
   } catch (error) {
