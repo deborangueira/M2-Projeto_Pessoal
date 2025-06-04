@@ -13,6 +13,9 @@ db.connect() // Conexão com o banco de dados
 
     app.use(express.json());
 
+    const frontendRoutes = require('./routes/frontRoutes');
+    app.use('/', frontendRoutes);
+
     const userRoutes = require('./routes/userRoutes');
     app.use('/users', userRoutes); 
 
@@ -27,9 +30,6 @@ db.connect() // Conexão com o banco de dados
     
     const subtaskRoutes = require('./routes/subtaskRoutes');
     app.use('/subtask', subtaskRoutes);
- 
-    const frontendRoutes = require('./routes/frontRoutes');
-    app.use('/', frontendRoutes);
 
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
