@@ -14,9 +14,7 @@
 
 Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades** para que os usuários tenham um maior controle de sua agenda, desde a organização ao acompanhamento do progresso dessas atividades diariamente, tendo como foco as ferramentas mais essenciais para tal. 
 
-Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição, prazo de conclusão, além de uma lista "to do" de sub-atividades relacionadas àquela principal. 
-
-Tais atividades também podem ser categorizadas de acordo com as áreas da vida de cada usuário (como acadêmica, saúde e vida pessoal).  Ademais é possível organizar as atividades por grupos, ou seja, criar projetos. Isto proporciona uma visão clara e estruturada das responsabilidades.que o usuário tem.
+Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição, e prazo de conclusão. Além disso, as atividades também podem ser categorizadas de acordo com as áreas da vida de cada usuário (como acadêmica, saúde e vida pessoal).  Isto proporciona uma visão clara e estruturada das responsabilidades.que o usuário tem.
 
 Por fim, é possível realizar a edição e exclusão de atividades, garantindo flexibilidade e controle para que os usuários mantenham seu planejamento sempre atualizado.
 
@@ -31,16 +29,16 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 ### 2.2. User Stories
 
 
-US01 | **Como** estudante, **quero** cadastrar atividades e adicionar informações **para que** eu não perca de vista prazos e detalhes importantes sobre elas.
+US01 | **Como** universitário, **quero** adicionar informações essenciais das minhas atividades **para que** eu não perca de vista prazos e detalhes importantes sobre elas
 
 US02 | **Como** estagiário no banco, **quero** categorizar minhas atividades por áreas da vida **para que** eu possa visualizar a distribuição do meu tempo e evitar que eu me sobrecarregue
 
-US03 | **Como** freelancer, **quero** separar minhas atividades por projetos **para que** eu possa conclui-las no prazo e acompanhar seu progresso com mais eficiência
+US03 | **Como** estudante, **quero** gerenciar minhas atividades com rapidez **para que** minha transição para o digital seja fluida e fácil.
 
 ## Análise INVEST da User Story US01
 
 **User Story analisada:**  
-US01 | Como estudante, quero cadastrar atividades e adicionar informações para que eu não perca de vista prazos e detalhes importantes sobre elas.
+US01 | **Como** universitário, **quero** adicionar informações essenciais das minhas atividades **para que** eu não perca de vista prazos e detalhes importantes sobre elas
 
 - **I – Independente:** Pode ser desenvolvida e testada separadamente.
 
@@ -62,7 +60,7 @@ US01 | Como estudante, quero cadastrar atividades e adicionar informações para
 
 **1. Introdução**
 
-A plataforma foi desenvolvida utilizando cinco bancos de dados principais que armazenam as informações sobre os usuários, atividades, sub-atividades, projetos e as categorias. 
+A plataforma foi desenvolvida utilizando trÊs bancos de dados principais que armazenam as informações sobre os usuários, atividades, sub-atividades, projetos e as categorias. 
 
 **2. Diagrama Lógico do Banco de Dados**
 
@@ -86,32 +84,15 @@ A plataforma foi desenvolvida utilizando cinco bancos de dados principais que ar
 - `usuario_id`: FK para usuarios
 - `categoria_id`: FK para categoria` 
 
-**Sub-atividades**
-- `id`: Identificador único (PK)
-- `título`: nome da atividade
-- `descricao`: detalhamento sobre a atividade
-- `prazo`: data em que deve ser concluída
-- `prioridade`: nível de importância em escala numérico
-- `concluído`: Icheck-box que indica quando foi concluída
-- `criado_em`: data de criação
-- `subatividade_id`: FK para atividades
-
 **categorias**
 - `id`: Identificador único do usuário (PK)
 - `título_categoria`: nome da categoria
-- `descricao`: detalhamento para entender o que ela inclui.
-
-**projetos**
-- `id`: Identificador único do usuário (PK)
-- `titulo_projetos`: nome da categoria
 - `descricao`: detalhamento para entender o que ela inclui.
 
 **4. Cardinalidade das Relações**
  
 - **Usuário → Atividades**: Um usuário pode ter várias atividades **1:N**. 
 - **Projetos → Atividades**: Um projeto pode conter várias atividades **1:N**
-- **Atividade → Subatividades**: Uma atividade pode conter várias sub-atividades **1:N**
-- **Atividades → Categoria**: Uma atividade pode está relacionada a uma categoria **1:1**.
 
 **5. Modelo Físico – Schema do Banco de Dados**
 
@@ -205,16 +186,6 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
      - `updateCategory`: Atualiza dados da categoria
      - `deleteCategory`: Remove categoria do sistema
 
-3. **Project Service**
-   - Responsável pelo gerenciamento de projetos
-   - Atributos: id, título e descrição
-   - Métodos principais:
-     - `getAllProject`: Busca todas os projetos
-     - `getProjectById`: busca projeto por ID
-     - `createProject`: Cria novo projeto
-     - `updateProject`: Atualiza dados do projeto
-     - `deleteProject`: Remove projeto do sistema
-
 4. **Task Service**
    - Responsável pelo gerenciamento de atividades
    - Atributos: id, título, descrição, prazo, prioridade, concluido, criado_em, id_usuário, id_categoria, id_projeto.
@@ -225,15 +196,6 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
      - `updateTask`: Atualiza dados da atividade
      - `deleteTask`: Remove atividade do sistema
 
-5. **Subtask Service**
-   - Responsável pelo gerenciamento de sub-atividades
-   - Atributos: id, título, descrição, prazo, prioridade, concluído, criado_em, id_subAtividades.
-   - Métodos principais:
-     - `getAllSubtask`: Busca todas as sub-atividades
-     - `getSubtaskById`: busca sub-atividades por ID
-     - `createSubtask`: Cria nova sub-atividades
-     - `updateSubtask`: Atualiza dados da ativsub-atividadesidade
-     - `deleteSubtask`: Remove sub-atividades do sistema
 
 ### 3.2. Arquitetura (Semana 5)
 
@@ -255,15 +217,13 @@ Para essa aplicação, a arquitetura MVC foi implementada da seguinte maneira:
 
 Para o wireframe, foi esboçado as telas e funcionalidades que compõem a base principal da aplicação junto com algumas anotações.
 
-Nesse sentido, estão representadas (da esquerda para a direita e de cima para baixo) as telas de: (1) Log-in; (2) Cadastro; (3) Tela de atividades; (4) Tela de menu expandida; (5) Configuração-perfil; (5) Configuração-categorias; e, por fim,  (6) Tela de projetos. 
+Nesse sentido, estão representadas (da esquerda para a direita e de cima para baixo) as telas de: (1) Log-in; (2) Cadastro; (3) Tela de atividades; (4) Tela de menu expandida; (5) Configuração-perfil; e, por fim, (5) Configuração-categorias. 
 
 As telas de Log-in e cadastro são simples e contam com campos para serem preenchidos com as informações de login do usuário. Elas também possuem atalhos umas para as outras, encontrado na frase que se encontra abaixo dos botões.
 
-A terceira tela contém uma lista de todas as atividades cadastradas pelo usuário e o detalhamento de cada uma, sendo elas: título, descrição, prazo, “to do”, prioridade, status, categoria e projeto a que pertence. Somado a isso, as opções de excluir e adicionar estão indicadas por ícones e, para editar, basta clicar no campo referente. A quarta tela por sua vez, conta com atalhos para outras telas e um resumo geral acerca do status das atividades. Ambas as telas se relacionam, portanto, com a primeira user story pois garantem uma visualização eficiente das informações e manipulação simples delas.
+A terceira tela contém uma lista de todas as atividades cadastradas pelo usuário e o detalhamento de cada uma, sendo elas: título, descrição, prazo, prioridade, status e categoria. Somado a isso, as opções de excluir e adicionar estão indicadas por ícones e, para editar, basta clicar no campo referente. A quarta tela por sua vez, conta com atalhos para outras telas e um resumo geral acerca do status das atividades. Ambas as telas se relacionam, portanto, com a primeira user story pois garantem uma visualização eficiente das informações e manipulação simples delas.
 
 Por outro lado, enquanto a tela de configurações-perfil permite a edição de informações pessoais de Log-in, a de configurações-Categorias permite que sejam criadas e editadas tags que servem como organizadores das atividades, podendo ser definidas de forma individual pelo usuário. Por conta disso, esta tela em específico se relaciona com a segunda user story.
-
-Por fim, a tela de projetos conta com uma série de cards expansíveis, esses cards são agrupamento de atividades feitos para que o usuário se organize por projeto e acompanhe seu progresso neles. Por exemplo, se o usuário tem uma aplicação web para desenvolver no seu trabalho, ele pode criar um projeto que agrupará todas as atividades relacionadas. Dessa forma, essa tela se relaciona com a terceira user story.
 
 ### 3.4. Guia de estilos (Semana 05)
 
@@ -296,16 +256,6 @@ Por fim, a tela de projetos conta com uma série de cards expansíveis, esses ca
 | PUT    | `/category/:id` | Atualizar dados da categoria | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título_categoria, descricao }` |
 | DELETE | `/category/:id` | Deletar categoria pelo ID    | Parâmetro URL: `id`  
 
- #### projeto
-
-| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
-| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/project`     | Criar um novo projeto      | Corpo JSON: `{ id, titulo_projeto, descricao }`                                                  |
-| GET    | `/project`     | Listar todos os projetos   | -                                                                                                                              |
-| GET    | `/project/:id` | Buscar projeto pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
-| PUT    | `/project/:id` | Atualizar projeto do usuário | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ titulo_projeto, descricao }` |
-| DELETE | `/project/:id` | Deletar projeo pelo ID    | Parâmetro URL: `id`  
-
  #### Atividades
 
 | Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
@@ -315,16 +265,6 @@ Por fim, a tela de projetos conta com uma série de cards expansíveis, esses ca
 | GET    | `/task/:id` | Buscar atividade pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
 | PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto}` |
 | DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
-
- #### sub-atividades
-
-| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
-| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/subtask`     | Criar uma nova sub-atividade      | Corpo JSON: `{ id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades }`                                                  |
-| GET    | `/subtask`     | Listar todas as sub-atividades   | -                                                                                                                              |
-| GET    | `/subtask/:id` | Buscar sub-atividade pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
-| PUT    | `/subtask/:id` | Atualizar dados das sub-atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ id, titulo, descricao, prazo, prioridade, concluido, criado_em, id_subAtividades}` |
-| DELETE | `/subtask/:id` | Deletar sub-atividade pelo ID    | Parâmetro URL: `id`  
 
 ### 3.7 Interface e Navegação (Semana 07)
 
