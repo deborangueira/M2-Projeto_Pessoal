@@ -28,8 +28,8 @@ const getTaskById = async (req, res) => {
 
 const createTask = async (req, res) => {
   try {
-    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto} = req.body;
-    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto);
+    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria} = req.body;
+    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria);
     res.status(201).json(newTask);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -38,8 +38,8 @@ const createTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   try {
-    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto} = req.body;
-    const updatedTask = await taskService.updateTask(req.params.id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto);
+    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria} = req.body;
+    const updatedTask = await taskService.updateTask(req.params.id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria);
     if (updatedTask) {
       res.status(200).json(updatedTask);
     } else {

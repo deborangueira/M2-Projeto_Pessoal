@@ -13,13 +13,6 @@ CREATE TABLE IF NOT EXISTS categoria ( --category
   descricao TEXT
 );
 
--- ciaração da tabela de projetos
-CREATE TABLE IF NOT EXISTS projetos ( --project
-  id SERIAL PRIMARY KEY,
-  titulo_projeto VARCHAR(100) NOT NULL,
-  descrissao TEXT
-);
-
 -- criação da tabela de atividades
 CREATE TABLE IF NOT EXISTS atividades ( --task
   id SERIAL PRIMARY KEY,
@@ -31,21 +24,6 @@ CREATE TABLE IF NOT EXISTS atividades ( --task
   criado_em TIMESTAMP,
   id_usuario INT,
   id_categoria INT,
-  id_projeto INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-  FOREIGN KEY (id_categoria) REFERENCES categoria(id),
-  FOREIGN KEY (id_projeto) REFERENCES projetos(id)
-);
-
--- criação da tabela de subAtividades
-CREATE TABLE IF NOT EXISTS subAtividades ( --subtask
-  id SERIAL PRIMARY KEY,
-  titulo VARCHAR(50) NOT NULL,
-  descricao TEXT,
-  prazo TIMESTAMP,
-  prioridade INTEGER,
-  concluido BOOLEAN,
-  criado_em TIMESTAMP,
-  id_subAtividades INT,
-  FOREIGN KEY (id_subAtividades) REFERENCES atividades(id)
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 );

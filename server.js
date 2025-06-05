@@ -17,19 +17,14 @@ db.connect() // Conexão com o banco de dados
     app.use('/', frontendRoutes);
 
     const userRoutes = require('./routes/userRoutes');
-    app.use('/users', userRoutes); 
+    app.use('/user', userRoutes); 
 
     const categoryRoutes = require('./routes/categoryRoutes');
     app.use('/category', categoryRoutes);
 
-    const projectRoutes = require('./routes/projectRoutes');
-    app.use('/project', projectRoutes);
-
     const taskRoutes = require('./routes/taskRoutes');
     app.use('/task', taskRoutes);
     
-    const subtaskRoutes = require('./routes/subtaskRoutes');
-    app.use('/subtask', subtaskRoutes);
 
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
