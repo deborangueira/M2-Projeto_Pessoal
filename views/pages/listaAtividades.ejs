@@ -1,0 +1,43 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Prazo</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Status</th>
+                <th scope="col">Categoria</th>
+            </tr>
+        </thead>
+        <tbody id="atividades"></tbody>
+    </table>
+
+    <script>
+
+        window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (arrow function)
+            const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
+            const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
+            const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
+            data.forEach(task => { // para cada task (objeto = json) dentro de data
+                console.log("tasks", task);
+                const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
+                createColumn(line, task.título);
+                createColumn(line, task.descricao);
+                createColumn(line, task.prazo);
+                createColumn(line, task.prioridade);
+                createColumn(line, task.concluido);
+                createColumn(line, task.status);
+                tableBody.appendChild(line)
+            });
+        })
+
+        function createColumn(line, text) {
+            const column = document.createElement("td"); // cria-se os espaços nas colunas para cada atributo do objeto
+            column.innerText = text; // adiciona a informação
+            line.appendChild(column); // para determinada coluna da linha do objeto filho
+        }
+
+    </script>
+
+</div>

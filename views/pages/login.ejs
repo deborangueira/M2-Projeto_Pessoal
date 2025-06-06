@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <header>
-        <h1>Bem vindo ao Smart Tasks</h1>
-        <p>acesse sua conta</p>
-    </header>
+<div>
+    <h2>Bem vindo ao Smart Tasks</h2>
+    <p>acesse sua conta</p>
+    <form action="/users" method="POST">
 
-    <main>
-        <form action="/users" method="GET">
-
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-            <br><br>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" required>
-            <br><br>
-            <button type="submit">Acessar</button>
-        </form>
-        <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
-    </main>
-
-
-</body>
-</html>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br><br>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha" required>
+        <br><br>
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+</div>

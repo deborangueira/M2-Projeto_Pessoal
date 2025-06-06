@@ -1,0 +1,30 @@
+<div>
+    <form action="/task" method="POST">
+
+        <label for="título">Título:</label>
+        <input type="título" name="título" id="título" required>
+        <br>
+        <label for="descricao">Descrição:</label>
+        <input type="descricao" name="descricao" id="descricao" required>
+        <br>
+        <label for="prazo">Prazo:</label>
+        <input type="date" name="prazo" id="prazo" required>
+        <br>
+        <label for="prioridade">Prioridade:</label>
+        <select name="prioridade" id="prioridade" required>
+            <option value="alta">alta</option>
+            <option value="média">média</option>
+            <option value="Baixa">Baixa</option>
+        </select>
+        <br>
+        <label for="concluido">Status:</label>
+        <select name="concluido" id="concluido" required>
+            <option value="a fazer">a fazer</option>
+            <option value="em andamento">em andamento</option>
+            <option value="concluído">concluído</option>
+        </select>
+        <br><br>
+        <button type="submit">Adicionar</button>
+    </form>
+    <p><a href="/listaAtividades">Voltar</a></p>
+</div>

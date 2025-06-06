@@ -17,7 +17,7 @@ db.connect() // Conexão com o banco de dados
     app.use('/', frontendRoutes);
 
     const userRoutes = require('./routes/userRoutes');
-    app.use('/user', userRoutes); 
+    app.use('/users', userRoutes); 
 
     const categoryRoutes = require('./routes/categoryRoutes');
     app.use('/category', categoryRoutes);

@@ -30,7 +30,9 @@ const createTask = async (req, res) => {
   try {
     const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria} = req.body;
     const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria);
-    res.status(201).json(newTask);
+    setTimeout(() => {
+      res.redirect("/listaAtividades");
+    }, 700);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
