@@ -15,11 +15,11 @@
 
     <script>
 
-        window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (arrow function)
+        window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (essa é do tipo arrow function)
             const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
             const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
             const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
-            data.forEach(task => { // para cada task (objeto = json) dentro de data
+            data.forEach(task => { // para cada task (task=objeto=json) dentro de data
                 console.log("tasks", task);
                 const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
                 createColumn(line, task.título);

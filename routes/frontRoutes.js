@@ -4,8 +4,6 @@ const path = require('path');
 
 // Roteamento para páginas dinâmicas
 
-// Rota raiz que redireciona para a página de login
-
 router.get('/', (req, res) => {
     res.render(path.join(__dirname, '../views/layout/main'), {
         pageTitle: 'Login no SmartTasks',
@@ -27,13 +25,6 @@ router.get('/login', (req, res) => {
   });
 });
 
-router.get('/categorias', (req, res) => {
-  res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'minhas categorias',
-    content: path.join(__dirname, '../views/pages/categorias')
-  });
-});
-
 router.get('/listaAtividades', (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
     pageTitle: 'minhas atividades',
@@ -48,13 +39,25 @@ router.get('/novaAtividade', (req, res) => {
   });
 });
 
+router.get('/listaCategorias', (req, res) => {
+  res.render(path.join(__dirname, '../views/layout/main'), {
+    pageTitle: 'minhas categorias',
+    content: path.join(__dirname, '../views/pages/listaCategorias')
+  });
+});
+
+router.get('/novaCategoria', (req, res) => {
+  res.render(path.join(__dirname, '../views/layout/main'), {
+    pageTitle: 'adicionar categoria',
+    content: path.join(__dirname, '../views/pages/novaCategoria')
+  });
+});
+
 router.get('/perfil', (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
     pageTitle: 'Meu perfil',
     content: path.join(__dirname, '../views/pages/perfil')
   });
 });
-
-// Adicione outras rotas conforme necessário
 
 module.exports = router;

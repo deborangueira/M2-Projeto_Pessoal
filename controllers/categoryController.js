@@ -30,9 +30,8 @@ const createCategory = async (req, res) => {
   try {
     const { titulo_categoria, descricao } = req.body;
     const newCategory = await categoryService.createCategory( titulo_categoria, descricao);
-    res.status(201).json(newCategory);
     setTimeout(() => {
-      res.redirect("/categorias");
+      res.redirect("/listaCategorias");
     }, 700);
   } catch (error) {
     res.status(500).json({ error: error.message });

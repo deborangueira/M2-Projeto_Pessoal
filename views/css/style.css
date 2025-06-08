@@ -1,60 +1,45 @@
-/* Reset básico para remover estilos padrão do navegador */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Estilo para o corpo da página */
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f0f0;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Estilo para o cabeçalho */
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-  }
-  
-  /* Estilo para a navegação dentro do cabeçalho */
-  header nav ul {
-    list-style-type: none;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  header nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Estilo para o conteúdo principal */
-  main {
-    padding: 20px;
-  }
-  
-  /* Estilo para o rodapé */
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
+.barraNavegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-family: sans-serif;
+}
+
+.linksNavegação ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.linksNavegação a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.linksNavegação a:hover {
+  background-color: #eee;
+}
+
+.linksNavegação a.active {
+  background-color: #f3e8f9;
+  color: #a855f7;
+  box-shadow: 0 2px 5px rgba(168, 85, 247, 0.2);
+  font-weight: 500;
+}
+
+.app-name {
+  font-weight: bold;
+  color: #a855f7;
+}
