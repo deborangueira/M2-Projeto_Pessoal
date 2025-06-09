@@ -20,8 +20,7 @@ db.connect() // Conexão com o banco de dados
     app.use('/users', userRoutes); 
 
     const taskRoutes = require('./routes/taskRoutes');
-    app.use('/task', taskRoutes);
-    
+    app.use('/task', taskRoutes);   
 
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {

@@ -1,30 +1,137 @@
-<div>
-    <form action="/task" method="POST">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-        <label for="título">Título:</label>
-        <input type="título" name="título" id="título" required>
-        <br>
-        <label for="descricao">Descrição:</label>
-        <input type="descricao" name="descricao" id="descricao" required>
-        <br>
-        <label for="prazo">Prazo:</label>
-        <input type="date" name="prazo" id="prazo" required>
-        <br>
-        <label for="prioridade">Prioridade:</label>
-        <select name="prioridade" id="prioridade" required>
-            <option value="alta">alta</option>
-            <option value="média">média</option>
-            <option value="Baixa">Baixa</option>
-        </select>
-        <br>
-        <label for="concluido">Status:</label>
-        <select name="concluido" id="concluido" required>
-            <option value="⚪ A fazer">a fazer</option>
-            <option value="🟡 Em andamento">em andamento</option>
-            <option value="🟢 Concluído">concluído</option>
-        </select>
-        <br><br>
-        <button type="submit">Adicionar</button>
-    </form>
-    <p><a href="/listaAtividades">Voltar</a></p>
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Título da página */
+    .container h1 {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /*formulário*/
+
+    .adicionarAtividade form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        max-width: 800px;
+        margin-bottom: 40px;
+    }
+
+    .adicionarAtividade {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* centraliza os inputs horizontalmente */
+        background-color: rgb(225, 216, 216);
+        padding: 25px 30px;
+        border-radius: 12px;
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
+    }
+
+
+    .adicionarAtividade input,
+    .adicionarAtividade select,
+    .adicionarAtividade textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #fff;
+        max-width: 600px;
+    }
+
+    .adicionarAtividade button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .adicionarAtividade button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+
+    .btVoltar button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .btVoltar button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+
+</style>
+
+<body>
+
+    <div class="container">
+        <h1>📋 Adicionar uma nova atividade</h1>
+    </div>
+    <br>
+
+    <div>
+        <form action="/task" method="POST" class="adicionarAtividade">
+
+            <input type="título" name="título" id="título" placeholder="título" required>
+            <br>
+            <input type="descricao" name="descricao" id="descricao" placeholder="descrição" required>
+            <br>
+            <input type="date" name="prazo" id="prazo" required>
+            <br>
+            <select name="prioridade" id="prioridade" required>
+                <option value="N/A">prioridade</option>
+                <option value="alta">alta</option>
+                <option value="média">média</option>
+                <option value="Baixa">Baixa</option>
+            </select>
+            <br>
+            <select name="concluido" id="concluido" required>
+                <option value="N/A">status</option>
+                <option value="⚪ A fazer">a fazer</option>
+                <option value="🟡 Em andamento">em andamento</option>
+                <option value="🟢 Concluído">concluído</option>
+            </select>
+            <br><br>
+            <button class="btAdicionar" type="submit">Adicionar</button>
+        </form>
+    </div>
+    <br><br>
+<div class="btVoltar">
+    <a href="/listaAtividades" class="btn-cancelar">Cancelar</a>
 </div>
