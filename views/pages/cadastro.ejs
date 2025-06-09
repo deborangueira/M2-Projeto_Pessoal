@@ -1,95 +1,22 @@
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<div class="containerCadastro">
+  <div class="container">
 
-    body {
-      background-color: #f9f9f9;
-      padding: 40px;
-      color: #333;
-    }
-
-  .container { 
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    width: 43vw; /* 25% da largura da viewport */
-    text-align: left;
-    left: 20px; 
-  }
-    .containerCentral {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
-
-    h1 {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 16px;
-      color: #444;
-    }
-
-    p {
-      margin-bottom: 20px;
-      font-size: 15px;
-      color: #555;
-    }
-
-    form input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      background-color: #fff;
-    }
-
-    button[type="submit"] {
-      margin-top: 24px;
-      background-color: #a78bfa;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.2s ease;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #8b6cf3;
-    }
-
-
-  </style>
-
-<div class="container">
-    
     <h1>Cadastre-se</h1>
     <p>você está perto de conhecer o SmartTask.</p>
-    
+
     <form class="conteinerCentral" action="/users" method="POST">
 
-        <input type="nome" name="nome" id="nome" placeholder="nome completo"  required>
-        <br><br>
-        <input type="email" name="email" id="email" placeholder="email"  required>
-        <br><br>
-        <input type="password" name="senha" id="senha" placeholder="senha"  required>
-        <br><br>
-        <button type="submit">Cadastrar</button>
+      <input type="nome" name="nome" id="nome" placeholder="nome completo" required>
+      <br><br>
+      <input type="email" name="email" id="email" placeholder="email" required>
+      <br><br>
+      <input type="password" name="senha" id="senha" placeholder="senha" required>
+      <br><br>
+      <button type="submit">Cadastrar</button>
     </form>
 
     <p>Já tem conta? <a href="/login">Faça login</a></p>
 
 
+  </div>
 </div>
-

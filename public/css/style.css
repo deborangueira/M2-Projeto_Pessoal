@@ -58,3 +58,234 @@
         font-size: 18px;
     }
 }
+
+    .containerCriarAtv{
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Título da página */
+    .container h1 {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /*formulário*/
+
+    .adicionarAtividade form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        max-width: 800px;
+        margin-bottom: 40px;
+    }
+
+    .adicionarAtividade {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* centraliza os inputs horizontalmente */
+        background-color: rgb(246, 240, 240);
+        padding: 25px 30px;
+        border-radius: 12px;
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
+    }
+
+
+    .adicionarAtividade input,
+    .adicionarAtividade select,
+    .adicionarAtividade textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #fff;
+        max-width: 600px;
+    }
+
+    .adicionarAtividade button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .adicionarAtividade button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+}
+
+.containerLogin{
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        width: 43vw;
+        min-width: 300px;
+        text-align: left;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #444;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #555;
+    }
+
+    form input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color: #fff;
+        margin-bottom: 16px;
+    }
+
+    button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+
+    a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+    .containerCadastro{
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      padding: 40px;
+      color: #333;
+    }
+
+  .container { 
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    width: 43vw; /* 25% da largura da viewport */
+    text-align: left;
+    left: 20px; 
+  }
+    .containerCentral {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #fff;
+    }
+
+    button[type="submit"] {
+      margin-top: 24px;
+      background-color: #a78bfa;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #8b6cf3;
+    }
+  }
