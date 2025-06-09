@@ -6,13 +6,6 @@ CREATE TABLE IF NOT EXISTS usuario ( --user
   senha VARCHAR(200)
 );
 
--- ciaração da tabela de categorias
-CREATE TABLE IF NOT EXISTS categoria ( --category
-  id SERIAL PRIMARY KEY,
-  titulo_categoria VARCHAR(100) NOT NULL,
-  descricao TEXT
-);
-
 -- criação da tabela de atividades
 CREATE TABLE IF NOT EXISTS atividades ( --task
   id SERIAL PRIMARY KEY,
