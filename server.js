@@ -50,3 +50,4 @@ const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json()); // LÊ JSON
 app.use(express.urlencoded({ extended: true })); // LÊ FORMS
+app.use(express.static("./public/"));

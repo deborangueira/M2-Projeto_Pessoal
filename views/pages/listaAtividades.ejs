@@ -1,189 +1,136 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
+<div class="containerAtividades">
+    <div class="containerSuperior">
+        <h1>Lista de tarefas</h1>
+        <p>Organize suas tarefas de forma simples e eficiente</p>
+    </div>
 
-    body {
-        background-color: #f9f9f9;
-        padding: 40px;
-        color: #333;
-    }
+    <div class="atalho">
+        <a href="/novaAtividade">
+            <button
+                style="background-color: #a78bfa; color: white; border: none; padding: 12px 20px; font-size: 16px;border-radius: 8px;cursor: pointer;width: 100%; transition: background-color 0.2s ease;">adicionar
+                atividade</button>
+        </a>
+    </div>
 
-    .containerSuperior p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 20px;
-    }
+    <br>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Prazo</th>
+                    <th scope="col">Prioridade</th>
+                    <th scope="col">Status</th>
+                    <th scope=""></th>
+                </tr>
+            </thead>
+            <tbody id="atividades"></tbody>
+        </table>
 
+        <script>
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-    }
+            window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (essa é do tipo arrow function)
+                const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
+                const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
+                const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
 
-    th,td {
-        text-align: left;
-        padding: 12px 16px;
-        border-bottom: 1px solid #eee;
-    }
+                data.forEach(task => { // para cada task (task=objeto=json) dentro de data
+                    const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
 
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
+                    //criar colunas editáveis
+                    createEditableColumn(line, "título", task.título);
+                    createEditableColumn(line, "descricao", task.descricao);
+                    createEditableColumn(line, "prazo", formatDateInput(task.prazo));
+                    createEditableColumn(line, "prioridade", task.prioridade);
+                    createEditableColumn(line, "concluido", task.concluido);
 
-    td input {
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        font-size: 14px;
-    }
+                    // Botão Editar
+                    const actionTd = document.createElement("td");
+                    const editButton = document.createElement("button");
+                    editButton.innerText = "✏️";
+                    editButton.addEventListener("click", () => enableEditing(line, task.id, editButton));
+                    actionTd.appendChild(editButton);
+                    line.appendChild(actionTd);
 
-    td input:disabled {
-        color: #555;
-    }
+                    // Botão Excluir
+                    const deleteButton = document.createElement("button");
+                    deleteButton.innerText = "🗑️";
+                    deleteButton.style.marginLeft = "5px";
+                    deleteButton.addEventListener("click", () => deleteTask(task.id, line));
+                    actionTd.appendChild(deleteButton);
 
-    button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-    }
-</style>
+                    tableBody.appendChild(line);
 
-<div class="containerSuperior">
-    <h1>Lista de tarefas</h1>
-    <p>Organize suas tarefas de forma simples e eficiente</p>
-</div>
-
-<div class="atalho">
-    <a href="/novaAtividade">
-        <button style="background-color: #a78bfa; color: white; border: none; padding: 12px 20px; font-size: 16px;border-radius: 8px;cursor: pointer;width: 100%; transition: background-color 0.2s ease;">adicionar atividade</button>
-</div>
-<br>
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Título</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Prazo</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody id="atividades"></tbody>
-    </table>
-
-    <script>
-
-        window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (essa é do tipo arrow function)
-            const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
-            const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
-            const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
-
-            data.forEach(task => { // para cada task (task=objeto=json) dentro de data
-                const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
-
-                //criar colunas editáveis
-                createEditableColumn(line, "título", task.título);
-                createEditableColumn(line, "descricao", task.descricao);
-                createEditableColumn(line, "prazo", formatDateInput(task.prazo));
-                createEditableColumn(line, "prioridade", task.prioridade);
-                createEditableColumn(line, "concluido", task.concluido);
-
-                // Botão Editar
-                const actionTd = document.createElement("td");
-                const editButton = document.createElement("button");
-                editButton.innerText = "✏️";
-                editButton.addEventListener("click", () => enableEditing(line, task.id, editButton));
-                actionTd.appendChild(editButton);
-                line.appendChild(actionTd);
-
-                // Botão Excluir
-                const deleteButton = document.createElement("button");
-                deleteButton.innerText = "🗑️";
-                deleteButton.style.marginLeft = "5px";
-                deleteButton.addEventListener("click", () => deleteTask(task.id, line));
-                actionTd.appendChild(deleteButton);
-
-                tableBody.appendChild(line);
-
-            });
-        })
-
-        //Definindo as Funções
-
-        function createEditableColumn(line, field, value) {
-            const column = document.createElement("td");
-            const input = document.createElement("input");
-            input.value = value;
-            input.disabled = true;
-            input.dataset.field = field;
-            column.appendChild(input);
-            line.appendChild(column);
-        }
-
-        function formatDateInput(dateStr) {
-            const date = new Date(dateStr);
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            return `${day}/${month}/${year}`;
-        }
-
-        function enableEditing(row, taskId, button) {
-            const inputs = row.querySelectorAll("input");
-            const editing = button.innerText === "✏️";
-
-            inputs.forEach(input => input.disabled = !editing);
-            button.innerText = editing ? "💾" : "✏️";
-
-            if (!editing) {
-                // Salvar
-                const body = {};
-                inputs.forEach(input => {
-                    const field = input.dataset.field;
-                    body[field] = input.value;
                 });
+            })
+
+            //Definindo as Funções
+
+            function createEditableColumn(line, field, value) {
+                const column = document.createElement("td");
+                const input = document.createElement("input");
+                input.value = value;
+                input.disabled = true;
+                input.dataset.field = field;
+                column.appendChild(input);
+                line.appendChild(column);
+            }
+
+            function formatDateInput(dateStr) {
+                const date = new Date(dateStr);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${day}/${month}/${year}`;
+            }
+
+            function enableEditing(row, taskId, button) {
+                const inputs = row.querySelectorAll("input");
+                const editing = button.innerText === "✏️";
+
+                inputs.forEach(input => input.disabled = !editing);
+                button.innerText = editing ? "💾" : "✏️";
+
+                if (!editing) {
+                    // Salvar
+                    const body = {};
+                    inputs.forEach(input => {
+                        const field = input.dataset.field;
+                        body[field] = input.value;
+                    });
+
+                    fetch(`/task/${taskId}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(body)
+                    })
+                        .then(res => {
+                            if (res.ok) {
+                                alert("Tarefa atualizada com sucesso!");
+                            } else {
+                                alert("Erro ao atualizar tarefa.");
+                            }
+                        });
+                }
+            }
+
+            function deleteTask(taskId, row) {
+                const confirmar = confirm("Tem certeza que deseja excluir esta tarefa?");
+                if (!confirmar) return;
 
                 fetch(`/task/${taskId}`, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body)
-                })
-                    .then(res => {
-                        if (res.ok) {
-                            alert("Tarefa atualizada com sucesso!");
-                        } else {
-                            alert("Erro ao atualizar tarefa.");
-                        }
-                    });
+                    method: "DELETE"
+                }).then(res => {
+                    if (res.ok) {
+                        row.remove();
+                        alert("Tarefa excluída com sucesso!");
+                    } else {
+                        alert("Erro ao excluir tarefa.");
+                    }
+                });
             }
-        }
+        </script>
 
-        function deleteTask(taskId, row) {
-            const confirmar = confirm("Tem certeza que deseja excluir esta tarefa?");
-            if (!confirmar) return;
-
-            fetch(`/task/${taskId}`, {
-                method: "DELETE"
-            }).then(res => {
-                if (res.ok) {
-                    row.remove();
-                    alert("Tarefa excluída com sucesso!");
-                } else {
-                    alert("Erro ao excluir tarefa.");
-                }
-            });
-        }
-    </script>
-
+    </div>
 </div>
