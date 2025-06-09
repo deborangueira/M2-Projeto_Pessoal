@@ -1,54 +1,90 @@
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-  body {
-    background-color: #f9f9f9;
-    padding: 40px;
-    color: #333;
-  }
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
 
-  .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    width: 43vw;
-    min-width: 300px;
-    text-align: left;
-    bottom: 20px;
-    left: 20px;
-  }
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        width: 43vw;
+        min-width: 300px;
+        text-align: left;
+        bottom: 20px;
+        left: 20px;
+    }
 
-  h2 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #444;
-  }
+    h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #444;
+    }
 
-  p {
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: #555;
-  }
+    p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #555;
+    }
 
-  form input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    background-color: #fff;
-    margin-bottom: 16px;
-  }
+    form input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color: #fff;
+        margin-bottom: 16px;
+    }
 
-  button[type="submit"] {
-    background-color: #a78bfa;
+    button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+
+    a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h2>Bem vindo ao Smart Tasks</h2>
+    <p>Acesse sua conta</p>
+
+    <form action="/users" method="POST">
+        <input type="email" name="email" id="email" placeholder="email" required>
+        <input type="password" name="senha" id="senha" placeholder="senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+    <a href="/listaAtividades">
+        <button style="background-color: #a78bfa;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -56,32 +92,8 @@
     border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.2s ease;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #8b6cf3;
-  }
-
-  a {
-    color: #a78bfa;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
-
-<div class="container">
-  <h2>Bem vindo ao Smart Tasks</h2>
-  <p>Acesse sua conta</p>
-
-  <form action="/users" method="POST">
-    <input type="email" name="email" id="email" placeholder="email" required>
-    <input type="password" name="senha" id="senha" placeholder="senha" required>
-    <button type="submit">Entrar</button>
-  </form>
-
-  <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+    transition: background-color 0.2s ease;"">
+      Acessar Minhas Atividades
+    </button>
+  </a>
 </div>
