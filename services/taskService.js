@@ -23,11 +23,11 @@ const getTaskById = async (id) => {
 };
 
 // Função para criar um nova atividade
-const createTask = async ( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria) => {
+const createTask = async ( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) => {
   try {
     const result = await db.query(
-      'INSERT INTO atividades (título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria]
+      'INSERT INTO atividades (título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario]
     );
     return result.rows[0];
   } catch (error) {
@@ -36,11 +36,11 @@ const createTask = async ( título, descricao, prazo, prioridade, concluido, cri
 };
 
 // Função para atualizar uma atividade por ID
-const updateTask = async (id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria) => {
+const updateTask = async (id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) => {
   try {
     const result = await db.query(
-      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7, id_categoria = $8 WHERE id = $9 RETURNING *',
-      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id]
+      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7 WHERE id = $8 RETURNING *',
+      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id]
     );
     return result.rows[0];
   } catch (error) {

@@ -28,11 +28,9 @@ const getTaskById = async (req, res) => {
 
 const createTask = async (req, res) => {
   try {
-    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria} = req.body;
-    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria);
-    setTimeout(() => {
-      res.redirect("/listaAtividades");
-    }, 700);
+    const {título, descricao, prazo, prioridade, concluido, criado_em, id_usuario} = req.body;
+    const newTask = await taskService.createTask( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario);
+    res.redirect("/listaAtividades");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
