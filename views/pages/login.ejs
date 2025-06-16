@@ -3,12 +3,46 @@
         <h2>Bem vindo!</h2>
         <p>Acesse sua conta.</p>
 
-        <form action="/users" method="GET">
+        <form id="loginForm">
             <input type="email" name="email" id="email" placeholder="email" required>
             <input type="password" name="senha" id="senha" placeholder="senha" required>
             <button type="submit">Entrar</button>
         </form>
+
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('senha').value;
+
+                fetch('/users', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.sucesso){
+                        window.location.href = '/listaAtividades';
+                    } else {
+                        alert('Login inválido!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao fazer login');
+                });
+            });
+        </script>
+
         <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+
         <a href="/listaAtividades">
             <button style="background-color: #a78bfa;color: white; border: none; padding: 12px 20px;font-size: 16px; border-radius: 8px; cursor: pointer; width: 100%; transition: background-color 0.2s ease;">
             Acessar Minhas Atividades</button>

@@ -29,108 +29,61 @@
             <tbody id="atividades"></tbody>
         </table>
 
-        <script>
+        <script> // entende o código abaixo em JS (ao invés de HTML)
 
             window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (essa é do tipo arrow function)
                 const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
                 const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
                 const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
-
                 data.forEach(task => { // para cada task (task=objeto=json) dentro de data
+
                     const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
+                    createColumn(line, task.título);
+                    createColumn(line, task.descricao);
+                    createColumn(line, task.prazo);
+                    createColumn(line, task.prioridade);
+                    createColumn(line, task.concluido);
 
-                    //criar colunas editáveis
-                    createEditableColumn(line, "título", task.título);
-                    createEditableColumn(line, "descricao", task.descricao);
-                    createEditableColumn(line, "prazo", formatDateInput(task.prazo));
-                    createEditableColumn(line, "prioridade", task.prioridade);
-                    createEditableColumn(line, "concluido", task.concluido);
+                    // Criar a nova coluna para o botão
+                    const buttonColumn = document.createElement("td");
+                    const button = document.createElement("button");
+                    button.innerText = "Excluir"; // ou qualquer outro texto
+                    button.style.cssText = "background-color: #dc2626; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;";
 
-                    // Botão Editar
-                    const actionTd = document.createElement("td");
-                    const editButton = document.createElement("button");
-                    editButton.innerText = "✏️";
-                    editButton.addEventListener("click", () => enableEditing(line, task.id, editButton));
-                    actionTd.appendChild(editButton);
-                    line.appendChild(actionTd);
+                    // Adicionar evento de clique ao botão se necessário
+                    button.addEventListener('click', async (event) => {
+                        try {
+                            const response = await fetch(`/task/${task.id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            });
 
-                    // Botão Excluir
-                    const deleteButton = document.createElement("button");
-                    deleteButton.innerText = "🗑️";
-                    deleteButton.style.marginLeft = "5px";
-                    deleteButton.addEventListener("click", () => deleteTask(task.id, line));
-                    actionTd.appendChild(deleteButton);
+                            if (response.ok) {
+                                // Remove a linha da tabela
+                                line.remove();
+                            } else {
+                                alert('Erro ao excluir a tarefa');
+                            }
+                        } catch (error) {
+                            console.error('Erro:', error);
+                            alert('Erro ao excluir a tarefa');
+                        }
+                    });
 
+                    buttonColumn.appendChild(button);
+                    line.appendChild(buttonColumn);
                     tableBody.appendChild(line);
-
                 });
             })
 
-            //Definindo as Funções
-
-            function createEditableColumn(line, field, value) {
-                const column = document.createElement("td");
-                const input = document.createElement("input");
-                input.value = value;
-                input.disabled = true;
-                input.dataset.field = field;
-                column.appendChild(input);
-                line.appendChild(column);
+            function createColumn(line, text) {
+                const column = document.createElement("td"); // cria-se os espaços nas colunas para cada atributo do objeto
+                column.innerText = text; // adiciona a informação
+                line.appendChild(column); // para determinada coluna da linha do objeto filho
             }
 
-            function formatDateInput(dateStr) {
-                const date = new Date(dateStr);
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                return `${day}/${month}/${year}`;
-            }
-
-            function enableEditing(row, taskId, button) {
-                const inputs = row.querySelectorAll("input");
-                const editing = button.innerText === "✏️";
-
-                inputs.forEach(input => input.disabled = !editing);
-                button.innerText = editing ? "💾" : "✏️";
-
-                if (!editing) {
-                    // Salvar
-                    const body = {};
-                    inputs.forEach(input => {
-                        const field = input.dataset.field;
-                        body[field] = input.value;
-                    });
-
-                    fetch(`/task/${taskId}`, {
-                        method: "PUT",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(body)
-                    })
-                        .then(res => {
-                            if (res.ok) {
-                                alert("Tarefa atualizada com sucesso!");
-                            } else {
-                                alert("Erro ao atualizar tarefa.");
-                            }
-                        });
-                }
-            }
-
-            function deleteTask(taskId, row) {
-                const confirmar = confirm("Tem certeza que deseja excluir esta tarefa?");
-                if (!confirmar) return;
-
-                fetch(`/task/${taskId}`, {
-                    method: "DELETE"
-                }).then(res => {
-                    if (res.ok) {
-                        row.remove();
-                        alert("Tarefa excluída com sucesso!");
-                    } else {
-                        alert("Erro ao excluir tarefa.");
-                    }
-                });
-            }
         </script>
 
     </div>

@@ -1,3 +1,4 @@
+
 .containerAtividades {
     * {
         margin: 0;
@@ -135,12 +136,18 @@
         font-size: 16px;
         border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease; 
+        &:hover {
+            cursor: pointer;
+            background-color: red;
+            height: 100%;
+            transform: scale(1.2);
+        }
     }
-
-    .adicionarAtividade button[type="submit"]:hover {
-        background-color: #8b6cf3;
-    }
+    
+     button {
+        transition: 100ms !important;
+     }
 }
 
 .containerLogin{
