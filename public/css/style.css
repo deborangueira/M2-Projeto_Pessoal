@@ -1,296 +1,325 @@
+/* Reset e fonte global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
+body {
+    background-color: #f9f9f9;
+    padding: 40px;
+    color: #333;
+}
+
+/* Layout principal com barra lateral e conteúdo */
+.main-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f9f9f9;
+}
+
+.sidebar-nav {
+    width: 220px;
+    background: #a78bfa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+    padding: 0 0;
+}
+
+.sidebar-nav nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.sidebar-nav nav ul li {
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar-nav nav ul li a {
+    display: block;
+    padding: 14px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.sidebar-nav nav ul li a:hover {
+    background: #8b6cf3;
+}
+
+/* --------- LISTA DE ATIVIDADES --------- */
 .containerAtividades {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-        background-color: #f9f9f9;
-        padding: 40px;
-        color: #333;
-    }
-
-    .containerSuperior p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 20px;
-    }
-
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-    }
-
-    th,
-    td {
-        text-align: left;
-        padding: 12px 16px;
-        border-bottom: 1px solid #eee;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-
-    td input {
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        font-size: 14px;
-    }
-
-    td input:disabled {
-        color: #555;
-    }
-
-    button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-    }
+    /* estilos da div principal */
 }
 
-    .containerCriarAtv{
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-        background-color: #f9f9f9;
-        padding: 40px;
-        color: #333;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    /* Título da página */
-    .container h1 {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    /*formulário*/
-
-    .adicionarAtividade form {
-        background-color: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        max-width: 800px;
-        margin-bottom: 40px;
-    }
-
-    .adicionarAtividade {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* centraliza os inputs horizontalmente */
-        background-color: rgb(246, 240, 240);
-        padding: 25px 30px;
-        border-radius: 12px;
-        max-width: 700px;
-        margin: 0 auto;
-        width: 100%;
-        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
-    }
-
-
-    .adicionarAtividade input,
-    .adicionarAtividade select,
-    .adicionarAtividade textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 16px;
-        background-color: #fff;
-        max-width: 600px;
-    }
-
-    .adicionarAtividade button[type="submit"] {
-        background-color: #a78bfa;
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s ease; 
-        &:hover {
-            cursor: pointer;
-            background-color: red;
-            height: 100%;
-            transform: scale(1.2);
-        }
-    }
-    
-     button {
-        transition: 100ms !important;
-     }
+.containerAtividades .containerSuperior p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-.containerLogin{
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-        background-color: #f9f9f9;
-        padding: 40px;
-        color: #333;
-    }
-
-    .container {
-        background-color: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        width: 43vw;
-        min-width: 300px;
-        bottom: 20px;
-        left: 20px;
-    }
-
-    h2 {
-        font-size: 26px;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: #444;
-    }
-
-    p {
-        margin-bottom: 20px;
-        font-size: 15px;
-        color: #555;
-    }
-
-    form input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-        background-color: #fff;
-        margin-bottom: 16px;
-    }
-
-    button[type="submit"] {
-        background-color: #a78bfa;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        width: 100%;
-        transition: background-color 0.2s ease;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #8b6cf3;
-    }
-
-    a {
-        color: #a78bfa;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
+.containerAtividades table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
-    .containerCadastro{
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+.containerAtividades th,
+.containerAtividades td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
 
-    body {
-      background-color: #f9f9f9;
-      padding: 40px;
-      color: #333;
-    }
+.containerAtividades th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
 
-  .container { 
+.containerAtividades td input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 14px;
+}
+
+.containerAtividades td input:disabled {
+    color: #555;
+}
+
+.containerAtividades button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 100ms !important;
+}
+
+/* --------- LOGIN --------- */
+.containerLogin {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+}
+
+.containerLogin .container {
     background-color: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    width: 43vw; /* 25% da largura da viewport */
-    left: 20px; 
-  }
-    .containerCentral {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
+    width: 43vw;
+    min-width: 300px;
+    bottom: 20px;
+    left: 20px;
+}
 
-    h1 {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 16px;
-      color: #444;
-    }
+.containerLogin h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #444;
+}
 
-    p {
-      margin-bottom: 20px;
-      font-size: 15px;
-      color: #555;
-    }
+.containerLogin p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #555;
+}
 
-    form input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      background-color: #fff;
-    }
+.containerLogin form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+    margin-bottom: 16px;
+}
 
-    button[type="submit"] {
-      margin-top: 24px;
-      background-color: #a78bfa;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.2s ease;
-    }
+.containerLogin button[type="submit"] {
+    background-color: #a78bfa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
 
-    button[type="submit"]:hover {
-      background-color: #8b6cf3;
+.containerLogin button[type="submit"]:hover {
+    background-color: #8b6cf3;
+}
+
+.containerLogin a {
+    color: #a78bfa;
+    text-decoration: none;
+}
+
+.containerLogin a:hover {
+    text-decoration: underline;
+}
+
+/* --------- CADASTRO --------- */
+.containerCadastro .container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    width: 43vw;
+    left: 20px;
+}
+
+.containerCadastro .containerCentral {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.containerCadastro h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #444;
+}
+
+.containerCadastro p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #555;
+}
+
+.containerCadastro form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+}
+
+.containerCadastro button[type="submit"] {
+    margin-top: 24px;
+    background-color: #a78bfa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.containerCadastro button[type="submit"]:hover {
+    background-color: #8b6cf3;
+}
+
+/* --------- CRIAR ATIVIDADE --------- */
+.containerCriarAtv .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.containerCriarAtv .container h1 {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerCriarAtv .adicionarAtividade form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.containerCriarAtv .adicionarAtividade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(246, 240, 240);
+    padding: 25px 30px;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
+}
+
+.containerCriarAtv .adicionarAtividade input,
+.containerCriarAtv .adicionarAtividade select,
+.containerCriarAtv .adicionarAtividade textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    max-width: 600px;
+}
+
+.containerCriarAtv .adicionarAtividade button[type="submit"] {
+    background-color: #a78bfa;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.containerCriarAtv .adicionarAtividade button[type="submit"]:hover {
+    background-color: red;
+    height: 100%;
+    transform: scale(1.2);
+}
+
+/* --------- RESPONSIVIDADE --------- */
+@media (max-width: 800px) {
+    .main-layout {
+        flex-direction: column;
     }
-  }
+    .sidebar-nav {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 12px 0;
+    }
+    .sidebar-nav nav ul {
+        flex-direction: row;
+        gap: 12px;
+    }
+    .content-atividades {
+        padding: 24px 8px;
+    }
+}
