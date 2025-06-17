@@ -1,325 +1,666 @@
-/* Reset e fonte global */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
 
-body {
-    background-color: #f9f9f9;
-    padding: 40px;
-    color: #333;
-}
-
-/* Layout principal com barra lateral e conteúdo */
-.main-layout {
-    display: flex;
-    min-height: 100vh;
-    background: #f9f9f9;
-}
-
-.sidebar-nav {
-    width: 220px;
-    background: #a78bfa;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.04);
-    padding: 0 0;
-}
-
-.sidebar-nav nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-.sidebar-nav nav ul li {
-    width: 100%;
-    text-align: center;
-}
-
-.sidebar-nav nav ul li a {
-    display: block;
-    padding: 14px 0;
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.sidebar-nav nav ul li a:hover {
-    background: #8b6cf3;
-}
-
-/* --------- LISTA DE ATIVIDADES --------- */
 .containerAtividades {
-    /* estilos da div principal */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .containerSuperior p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    td input {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    td input:disabled {
+        color: #555;
+    }
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
 }
 
-.containerAtividades .containerSuperior p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.containerAtividades table {
+/* Estilos para o modal de edição */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.containerAtividades th,
-.containerAtividades td {
-    text-align: left;
-    padding: 12px 16px;
+.modal-content {
+    background-color: white;
+    padding: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
     border-bottom: 1px solid #eee;
 }
 
-.containerAtividades th {
-    background-color: #f2f2f2;
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
     font-weight: bold;
-}
-
-.containerAtividades td input {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    font-size: 14px;
-}
-
-.containerAtividades td input:disabled {
-    color: #555;
-}
-
-.containerAtividades button {
-    background: none;
-    border: none;
     cursor: pointer;
-    font-size: 18px;
-    transition: 100ms !important;
+    line-height: 1;
 }
 
-/* --------- LOGIN --------- */
-.containerLogin {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
+.close:hover,
+.close:focus {
+    color: #000;
 }
 
-.containerLogin .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    width: 43vw;
-    min-width: 300px;
-    bottom: 20px;
-    left: 20px;
+.form-group {
+    margin-bottom: 20px;
+    padding: 0 24px;
 }
 
-.containerLogin h2 {
-    font-size: 26px;
-    font-weight: bold;
+.form-group:first-child {
+    padding-top: 20px;
+}
+
+.form-group label {
+    display: block;
     margin-bottom: 8px;
-    color: #444;
+    font-weight: 600;
+    color: #333;
 }
 
-.containerLogin p {
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: #555;
-}
-
-.containerLogin form input {
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    background-color: #fff;
-    margin-bottom: 16px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
 }
 
-.containerLogin button[type="submit"] {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding: 20px 24px;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.btn-cancel:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-save {
     background-color: #a78bfa;
     color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.2s ease;
 }
 
-.containerLogin button[type="submit"]:hover {
+.btn-save:hover {
     background-color: #8b6cf3;
 }
 
-.containerLogin a {
-    color: #a78bfa;
-    text-decoration: none;
-}
-
-.containerLogin a:hover {
-    text-decoration: underline;
-}
-
-/* --------- CADASTRO --------- */
-.containerCadastro .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    width: 43vw;
-    left: 20px;
-}
-
-.containerCadastro .containerCentral {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.containerCadastro h1 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #444;
-}
-
-.containerCadastro p {
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: #555;
-}
-
-.containerCadastro form input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    background-color: #fff;
-}
-
-.containerCadastro button[type="submit"] {
-    margin-top: 24px;
-    background-color: #a78bfa;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.2s ease;
-}
-
-.containerCadastro button[type="submit"]:hover {
-    background-color: #8b6cf3;
-}
-
-/* --------- CRIAR ATIVIDADE --------- */
-.containerCriarAtv .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.containerCriarAtv .container h1 {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.containerCriarAtv .adicionarAtividade form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    max-width: 800px;
-    margin-bottom: 40px;
-}
-
-.containerCriarAtv .adicionarAtividade {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(246, 240, 240);
-    padding: 25px 30px;
-    border-radius: 12px;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
-}
-
-.containerCriarAtv .adicionarAtividade input,
-.containerCriarAtv .adicionarAtividade select,
-.containerCriarAtv .adicionarAtividade textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #fff;
-    max-width: 600px;
-}
-
-.containerCriarAtv .adicionarAtividade button[type="submit"] {
-    background-color: #a78bfa;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.containerCriarAtv .adicionarAtividade button[type="submit"]:hover {
-    background-color: red;
-    height: 100%;
-    transform: scale(1.2);
-}
-
-/* --------- RESPONSIVIDADE --------- */
-@media (max-width: 800px) {
-    .main-layout {
+/* Estilos responsivos para o modal */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .form-actions {
         flex-direction: column;
     }
-    .sidebar-nav {
+    
+    .btn-cancel,
+    .btn-save {
         width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        padding: 12px 0;
-    }
-    .sidebar-nav nav ul {
-        flex-direction: row;
-        gap: 12px;
-    }
-    .content-atividades {
-        padding: 24px 8px;
     }
 }
+
+    .containerCriarAtv{
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Título da página */
+    .container h1 {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /*formulário*/
+
+    .adicionarAtividade form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        max-width: 800px;
+        margin-bottom: 40px;
+    }
+
+    .adicionarAtividade {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* centraliza os inputs horizontalmente */
+        background-color: rgb(246, 240, 240);
+        padding: 25px 30px;
+        border-radius: 12px;
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.07);
+    }
+
+
+    .adicionarAtividade input,
+    .adicionarAtividade select,
+    .adicionarAtividade textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #fff;
+        max-width: 600px;
+    }
+
+    .adicionarAtividade button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease; 
+        &:hover {
+            cursor: pointer;
+            background-color: red;
+            height: 100%;
+            transform: scale(1.2);
+        }
+      
+      /* Estilos para a página de perfil */
+      .containerPerfil {
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Segoe UI', sans-serif;
+          }
+      
+          body {
+              background-color: #f9f9f9;
+              padding: 40px;
+              color: #333;
+          }
+      
+          .containerSuperior {
+              text-align: center;
+              margin-bottom: 30px;
+          }
+      
+          .containerSuperior h1 {
+              color: #333;
+              margin-bottom: 10px;
+              font-size: 28px;
+          }
+      
+          .containerSuperior p {
+              color: #666;
+              font-size: 16px;
+          }
+      
+          .perfilCard {
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+              max-width: 800px;
+              margin: 0 auto;
+              overflow: hidden;
+          }
+      
+          .perfilHeader {
+              background: linear-gradient(135deg, #a78bfa, #8b6cf3);
+              color: white;
+              padding: 40px 30px;
+              text-align: center;
+          }
+      
+          .avatarContainer {
+              margin-bottom: 20px;
+          }
+      
+          .avatar {
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.2);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 32px;
+              font-weight: bold;
+              margin: 0 auto;
+              border: 3px solid rgba(255, 255, 255, 0.3);
+          }
+      
+          .perfilHeader h2 {
+              font-size: 24px;
+              margin-bottom: 8px;
+              font-weight: 600;
+          }
+      
+          .userEmail {
+              font-size: 16px;
+              opacity: 0.9;
+          }
+      
+          .perfilInfo {
+              padding: 30px;
+              border-bottom: 1px solid #eee;
+          }
+      
+          .perfilInfo h3 {
+              color: #333;
+              margin-bottom: 20px;
+              font-size: 18px;
+              font-weight: 600;
+          }
+      
+          .infoGrid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 20px;
+          }
+      
+          .infoItem {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+          }
+      
+          .infoItem label {
+              font-weight: 600;
+              color: #555;
+              font-size: 14px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+          }
+      
+          .infoItem span {
+              font-size: 16px;
+              color: #333;
+              padding: 8px 0;
+          }
+      
+          .statusAtivo {
+              color: #10b981 !important;
+              font-weight: 500 !important;
+          }
+      
+          .perfilActions {
+              padding: 30px;
+          }
+      
+          .perfilActions h3 {
+              color: #333;
+              margin-bottom: 20px;
+              font-size: 18px;
+              font-weight: 600;
+          }
+      
+          .actionButtons {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 15px;
+          }
+      
+          .btn-primary,
+          .btn-secondary,
+          .btn-danger {
+              padding: 12px 20px;
+              border: none;
+              border-radius: 8px;
+              font-size: 14px;
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              text-align: center;
+          }
+      
+          .btn-primary {
+              background-color: #a78bfa;
+              color: white;
+          }
+      
+          .btn-primary:hover {
+              background-color: #8b6cf3;
+              transform: translateY(-2px);
+          }
+      
+          .btn-secondary {
+              background-color: #f3f4f6;
+              color: #374151;
+              border: 1px solid #d1d5db;
+          }
+      
+          .btn-secondary:hover {
+              background-color: #e5e7eb;
+              transform: translateY(-2px);
+          }
+      
+          .btn-danger {
+              background-color: #dc2626;
+              color: white;
+          }
+      
+          .btn-danger:hover {
+              background-color: #b91c1c;
+              transform: translateY(-2px);
+          }
+      
+          /* Responsividade */
+          @media (max-width: 768px) {
+              .perfilCard {
+                  margin: 10px;
+              }
+      
+              .perfilHeader {
+                  padding: 30px 20px;
+              }
+      
+              .perfilInfo,
+              .perfilActions {
+                  padding: 20px;
+              }
+      
+              .infoGrid {
+                  grid-template-columns: 1fr;
+              }
+      
+              .actionButtons {
+                  grid-template-columns: 1fr;
+              }
+      
+              .avatar {
+                  width: 60px;
+                  height: 60px;
+                  font-size: 24px;
+              }
+      
+              .perfilHeader h2 {
+                  font-size: 20px;
+              }
+          }
+      }
+    }
+    
+     button {
+        transition: 100ms !important;
+     }
+}
+
+.containerLogin{
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        padding: 40px;
+        color: #333;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        width: 43vw;
+        min-width: 300px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #444;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #555;
+    }
+
+    form input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color: #fff;
+        margin-bottom: 16px;
+    }
+
+    button[type="submit"] {
+        background-color: #a78bfa;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #8b6cf3;
+    }
+
+    a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+    .containerCadastro{
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      padding: 40px;
+      color: #333;
+    }
+
+  .container { 
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    width: 43vw; /* 25% da largura da viewport */
+    left: 20px; 
+  }
+    .containerCentral {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #fff;
+    }
+
+    button[type="submit"] {
+      margin-top: 24px;
+      background-color: #a78bfa;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #8b6cf3;
+    }
+  }

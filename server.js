@@ -1,11 +1,23 @@
 require('dotenv').config(); // importando o módulo dotenv chamando a função config para carregar as variáveis de ambiente do arquivo .env
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const db = require('./config/db'); // chama a minha database
 const path = require('path');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Configuração de sessão
+app.use(session({
+  secret: 'oooooo-debora',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // em produção, definir como true com HTTPS
+    maxAge: 24 * 60 * 60 * 1000 // 24 horas
+  }
+}));
 
 db.connect() // Conexão com o banco de dados
   .then(() => {

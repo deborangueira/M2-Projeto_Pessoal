@@ -1,10 +1,10 @@
-<div class="containerCadastro">
+<div class="containerCadastro" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f9f9f9;">
   <div class="container">
 
     <h1>Cadastre-se</h1>
     <p>você está perto de conhecer o SmartTask.</p>
 
-    <form class="conteinerCentral" action="/users" method="POST">
+    <form class="conteinerCentral" action="/users/register" method="POST">
 
       <input type="text" name="nome" id="nome" placeholder="nome completo" required>
       <br><br>
@@ -14,9 +14,6 @@
       <br><br>
       <button type="submit">Cadastrar</button>
     </form>
-
-    <p>Já tem conta? <a href="/login">Faça login</a></p>
-
 
   </div>
 </div>

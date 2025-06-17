@@ -38,10 +38,18 @@ const createTask = async ( título, descricao, prazo, prioridade, concluido, cri
 // Função para atualizar uma atividade por ID
 const updateTask = async (id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) => {
   try {
+    // Adiciona timestamp de atualização
+    const agora = new Date();
+    
     const result = await db.query(
-      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7 WHERE id = $8 RETURNING *',
-      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id]
+      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7, atualizado_em = $8 WHERE id = $9 RETURNING *',
+      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, agora, id]
     );
+    
+    if (result.rows.length === 0) {
+      throw new Error('Atividade não encontrada');
+    }
+    
     return result.rows[0];
   } catch (error) {
     throw new Error('Erro ao atualizar atividade: ' + error.message);

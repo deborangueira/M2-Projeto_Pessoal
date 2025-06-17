@@ -58,10 +58,32 @@ const deleteUser = async (id) => {
   }
 };
 
+// Função para autenticar usuário (login simples)
+const authenticateUser = async (email, senha) => {
+  try {
+    const result = await db.query('SELECT * FROM usuario WHERE email = $1 AND senha = $2', [email, senha]);
+    return result.rows[0];
+  } catch (error) {
+    throw new Error('Erro ao autenticar usuário: ' + error.message);
+  }
+};
+
+// Função para buscar usuário por email
+const getUserByEmail = async (email) => {
+  try {
+    const result = await db.query('SELECT * FROM usuario WHERE email = $1', [email]);
+    return result.rows[0];
+  } catch (error) {
+    throw new Error('Erro ao buscar usuário por email: ' + error.message);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  authenticateUser,
+  getUserByEmail
 };

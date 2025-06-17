@@ -5,14 +5,6 @@
         <p>Organize suas tarefas de forma simples e eficiente</p>
     </div>
 
-    <div class="atalho">
-        <a href="/novaAtividade">
-            <button
-                style="background-color: #a78bfa; color: white; border: none; padding: 12px 20px; font-size: 16px;border-radius: 8px;cursor: pointer;width: 100%; transition: background-color 0.2s ease;">adicionar
-                atividade</button>
-        </a>
-    </div>
-
     <br>
     <div>
         <table>
@@ -23,67 +15,284 @@
                     <th scope="col">Prazo</th>
                     <th scope="col">Prioridade</th>
                     <th scope="col">Status</th>
-                    <th scope=""></th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody id="atividades"></tbody>
         </table>
 
-        <script> // entende o código abaixo em JS (ao invés de HTML)
+        <!-- Modal de Edição -->
+        <div id="editModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Editar Tarefa</h2>
+                    <span class="close" onclick="closeEditModal()">&times;</span>
+                </div>
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editTitulo">Título:</label>
+                        <input type="text" id="editTitulo" name="titulo" required maxlength="100">
+                        <div class="error-message" id="tituloError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editDescricao">Descrição:</label>
+                        <textarea id="editDescricao" name="descricao" rows="3" maxlength="500"></textarea>
+                        <div class="error-message" id="descricaoError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editPrazo">Data de Vencimento:</label>
+                        <input type="date" id="editPrazo" name="prazo">
+                        <div class="error-message" id="prazoError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editPrioridade">Prioridade:</label>
+                        <select id="editPrioridade" name="prioridade" required>
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                            <option value="urgente">Urgente</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editStatus">Status:</label>
+                        <select id="editStatus" name="concluido" required>
+                            <option value="false">Pendente</option>
+                            <option value="true">Concluída</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="closeEditModal()" class="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar Alterações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-            window.addEventListener('load', async () => { // ao carregar a página, ocorre o que está na função (essa é do tipo arrow function)
-                const response = await fetch("/task"); // requisição dos dados (que chegam como stream)
-                const data = await response.json(); // formata esses dados para json (e agora é possível ve-los no console.log)
-                const tableBody = document.querySelector("#atividades") // pegou o objeto tbody
-                data.forEach(task => { // para cada task (task=objeto=json) dentro de data
+        <script>
+            let currentEditingTaskId = null;
 
-                    const line = document.createElement("tr"); // cria-se uma nova linha para expor os dados
-                    createColumn(line, task.título);
-                    createColumn(line, task.descricao);
-                    createColumn(line, task.prazo);
-                    createColumn(line, task.prioridade);
-                    createColumn(line, task.concluido);
+            window.addEventListener('load', async () => {
+                loadTasks();
+            });
 
-                    // Criar a nova coluna para o botão
-                    const buttonColumn = document.createElement("td");
-                    const button = document.createElement("button");
-                    button.innerText = "Excluir"; // ou qualquer outro texto
-                    button.style.cssText = "background-color: #dc2626; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;";
+            async function loadTasks() {
+                try {
+                    const response = await fetch("/task");
+                    const data = await response.json();
+                    const tableBody = document.querySelector("#atividades");
+                    tableBody.innerHTML = ''; // Limpa a tabela antes de recarregar
+                    
+                    data.forEach(task => {
+                        const line = document.createElement("tr");
+                        line.setAttribute('data-task-id', task.id);
+                        
+                        // Colunas de dados
+                        createColumn(line, task.título);
+                        createColumn(line, task.descricao);
+                        createColumn(line, formatDate(task.prazo));
+                        createColumn(line, formatPriority(task.prioridade));
+                        createColumn(line, formatStatus(task.concluido));
 
-                    // Adicionar evento de clique ao botão se necessário
-                    button.addEventListener('click', async (event) => {
-                        try {
-                            const response = await fetch(`/task/${task.id}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            });
+                        // Coluna de ações
+                        const actionsColumn = document.createElement("td");
+                        actionsColumn.style.cssText = "display: flex; gap: 8px; align-items: center;";
+                        
+                        // Botão Editar
+                        const editButton = document.createElement("button");
+                        editButton.innerText = "Editar";
+                        editButton.style.cssText = "background-color: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
+                        editButton.addEventListener('click', () => openEditModal(task));
+                        
+                        // Botão Excluir
+                        const deleteButton = document.createElement("button");
+                        deleteButton.innerText = "Excluir";
+                        deleteButton.style.cssText = "background-color: #dc2626; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
+                        deleteButton.addEventListener('click', () => deleteTask(task.id, line));
 
-                            if (response.ok) {
-                                // Remove a linha da tabela
-                                line.remove();
-                            } else {
-                                alert('Erro ao excluir a tarefa');
-                            }
-                        } catch (error) {
-                            console.error('Erro:', error);
-                            alert('Erro ao excluir a tarefa');
+                        actionsColumn.appendChild(editButton);
+                        actionsColumn.appendChild(deleteButton);
+                        line.appendChild(actionsColumn);
+                        tableBody.appendChild(line);
+                    });
+                } catch (error) {
+                    console.error('Erro ao carregar tarefas:', error);
+                    alert('Erro ao carregar tarefas');
+                }
+            }
+
+            function createColumn(line, text) {
+                const column = document.createElement("td");
+                column.innerText = text;
+                line.appendChild(column);
+            }
+
+            function formatDate(dateString) {
+                if (!dateString) return 'Sem prazo';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('pt-BR');
+            }
+
+            function formatPriority(priority) {
+                const priorities = {
+                    'baixa': 'Baixa',
+                    'media': 'Média',
+                    'alta': 'Alta',
+                    'urgente': 'Urgente'
+                };
+                return priorities[priority] || priority;
+            }
+
+            function formatStatus(status) {
+                return status === true || status === 'true' ? 'Concluída' : 'Pendente';
+            }
+
+            function openEditModal(task) {
+                currentEditingTaskId = task.id;
+                
+                // Preenche o formulário com os dados da tarefa
+                document.getElementById('editTitulo').value = task.título || '';
+                document.getElementById('editDescricao').value = task.descricao || '';
+                document.getElementById('editPrazo').value = task.prazo ? task.prazo.split('T')[0] : '';
+                document.getElementById('editPrioridade').value = task.prioridade || 'baixa';
+                document.getElementById('editStatus').value = task.concluido ? 'true' : 'false';
+                
+                // Limpa mensagens de erro
+                clearErrorMessages();
+                
+                // Mostra o modal
+                document.getElementById('editModal').style.display = 'block';
+            }
+
+            function closeEditModal() {
+                document.getElementById('editModal').style.display = 'none';
+                currentEditingTaskId = null;
+                clearErrorMessages();
+            }
+
+            function clearErrorMessages() {
+                const errorElements = document.querySelectorAll('.error-message');
+                errorElements.forEach(element => element.textContent = '');
+            }
+
+            function validateForm() {
+                let isValid = true;
+                clearErrorMessages();
+
+                const titulo = document.getElementById('editTitulo').value.trim();
+                const descricao = document.getElementById('editDescricao').value.trim();
+                const prazo = document.getElementById('editPrazo').value;
+
+                // Validação do título
+                if (!titulo) {
+                    document.getElementById('tituloError').textContent = 'Título é obrigatório';
+                    isValid = false;
+                } else if (titulo.length < 3) {
+                    document.getElementById('tituloError').textContent = 'Título deve ter pelo menos 3 caracteres';
+                    isValid = false;
+                }
+
+                // Validação da descrição
+                if (descricao.length > 500) {
+                    document.getElementById('descricaoError').textContent = 'Descrição não pode exceder 500 caracteres';
+                    isValid = false;
+                }
+
+                // Validação da data
+                if (prazo) {
+                    const selectedDate = new Date(prazo);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        document.getElementById('prazoError').textContent = 'Data de vencimento não pode ser anterior a hoje';
+                        isValid = false;
+                    }
+                }
+
+                return isValid;
+            }
+
+            // Event listener para o formulário de edição
+            document.getElementById('editForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    return;
+                }
+
+                if (!confirm('Tem certeza que deseja salvar as alterações?')) {
+                    return;
+                }
+
+                const formData = new FormData(e.target);
+                const taskData = {
+                    título: formData.get('titulo'),
+                    descricao: formData.get('descricao'),
+                    prazo: formData.get('prazo') || null,
+                    prioridade: formData.get('prioridade'),
+                    concluido: formData.get('concluido') === 'true'
+                };
+
+                try {
+                    const response = await fetch(`/task/${currentEditingTaskId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(taskData)
+                    });
+
+                    if (response.ok) {
+                        closeEditModal();
+                        loadTasks(); // Recarrega a lista de tarefas
+                        alert('Tarefa atualizada com sucesso!');
+                    } else {
+                        const error = await response.json();
+                        alert(`Erro ao atualizar tarefa: ${error.error || 'Erro desconhecido'}`);
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                    alert('Erro ao atualizar tarefa');
+                }
+            });
+
+            async function deleteTask(taskId, lineElement) {
+                if (!confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`/task/${taskId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
                         }
                     });
 
-                    buttonColumn.appendChild(button);
-                    line.appendChild(buttonColumn);
-                    tableBody.appendChild(line);
-                });
-            })
-
-            function createColumn(line, text) {
-                const column = document.createElement("td"); // cria-se os espaços nas colunas para cada atributo do objeto
-                column.innerText = text; // adiciona a informação
-                line.appendChild(column); // para determinada coluna da linha do objeto filho
+                    if (response.ok) {
+                        lineElement.remove();
+                        alert('Tarefa excluída com sucesso!');
+                    } else {
+                        alert('Erro ao excluir a tarefa');
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                    alert('Erro ao excluir a tarefa');
+                }
             }
 
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', (event) => {
+                const modal = document.getElementById('editModal');
+                if (event.target === modal) {
+                    closeEditModal();
+                }
+            });
         </script>
 
     </div>
