@@ -248,15 +248,13 @@
 
                 if (!confirm('Tem certeza que deseja salvar as alterações?')) {
                     return;
-                }
-
-                const formData = new FormData(e.target);
+                }                const formData = new FormData(e.target);
                 const taskData = {
                     título: formData.get('titulo'),
                     descricao: formData.get('descricao'),
                     prazo: formData.get('prazo') || null,
                     prioridade: formData.get('prioridade'),
-                    concluido: formData.get('concluido') === 'true'
+                    concluido: formData.get('concluido') === 'true',
                 };
 
                 try {

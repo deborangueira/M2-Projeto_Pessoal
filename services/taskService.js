@@ -42,8 +42,8 @@ const updateTask = async (id, título, descricao, prazo, prioridade, concluido, 
     const agora = new Date();
     
     const result = await db.query(
-      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7, atualizado_em = $8 WHERE id = $9 RETURNING *',
-      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, agora, id]
+      'UPDATE atividades SET título = $1, descricao = $2, prazo = $3, prioridade = $4, concluido = $5, criado_em = $6, id_usuario = $7 WHERE id = $8 RETURNING *',
+      [título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id]
     );
     
     if (result.rows.length === 0) {
