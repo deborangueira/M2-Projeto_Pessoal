@@ -1,10 +1,25 @@
 <div class="containerAtividades">
 
-    <div class="containerSuperior">
-        <h1>Lista de tarefas</h1>
-        <p>Organize suas tarefas de forma simples e eficiente</p>
+    <!-- Filtros em card centralizado -->
+    <div class="filtros-container">
+        <div class="filtros-card">
+            <span style="font-weight: bold; color: #a78bfa; font-size: 18px; margin-right: 18px;">Filtros</span>
+            <label for="filtroPrioridade">Prioridade:</label>
+            <select id="filtroPrioridade">
+                <option value="">Todas</option>
+                <option value="baixa">Baixa</option>
+                <option value="media">Média</option>
+                <option value="alta">Alta</option>
+                <option value="urgente">Urgente</option>
+            </select>
+            <label for="filtroStatus">Status:</label>
+            <select id="filtroStatus">
+                <option value="">Todos</option>
+                <option value="true">Concluída</option>
+                <option value="false">Pendente</option>
+            </select>
+        </div>
     </div>
-
     <br>
     <div>
         <table>
@@ -75,54 +90,60 @@
 
         <script>
             let currentEditingTaskId = null;
+            let allTasks = [];
 
             window.addEventListener('load', async () => {
-                loadTasks();
+                await loadTasks();
+                document.getElementById('filtroPrioridade').addEventListener('change', renderFilteredTasks);
+                document.getElementById('filtroStatus').addEventListener('change', renderFilteredTasks);
             });
 
             async function loadTasks() {
                 try {
                     const response = await fetch("/task");
-                    const data = await response.json();
-                    const tableBody = document.querySelector("#atividades");
-                    tableBody.innerHTML = ''; // Limpa a tabela antes de recarregar
-                    
-                    data.forEach(task => {
-                        const line = document.createElement("tr");
-                        line.setAttribute('data-task-id', task.id);
-                        
-                        // Colunas de dados
-                        createColumn(line, task.título);
-                        createColumn(line, task.descricao);
-                        createColumn(line, formatDate(task.prazo));
-                        createColumn(line, formatPriority(task.prioridade));
-                        createColumn(line, formatStatus(task.concluido));
-
-                        // Coluna de ações
-                        const actionsColumn = document.createElement("td");
-                        actionsColumn.style.cssText = "display: flex; gap: 8px; align-items: center;";
-                        
-                        // Botão Editar
-                        const editButton = document.createElement("button");
-                        editButton.innerText = "Editar";
-                        editButton.style.cssText = "background-color: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
-                        editButton.addEventListener('click', () => openEditModal(task));
-                        
-                        // Botão Excluir
-                        const deleteButton = document.createElement("button");
-                        deleteButton.innerText = "Excluir";
-                        deleteButton.style.cssText = "background-color: #dc2626; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
-                        deleteButton.addEventListener('click', () => deleteTask(task.id, line));
-
-                        actionsColumn.appendChild(editButton);
-                        actionsColumn.appendChild(deleteButton);
-                        line.appendChild(actionsColumn);
-                        tableBody.appendChild(line);
-                    });
+                    allTasks = await response.json();
+                    renderFilteredTasks();
                 } catch (error) {
                     console.error('Erro ao carregar tarefas:', error);
                     alert('Erro ao carregar tarefas');
                 }
+            }
+
+            function renderFilteredTasks() {
+                const prioridade = document.getElementById('filtroPrioridade').value;
+                const status = document.getElementById('filtroStatus').value;
+                const tableBody = document.querySelector("#atividades");
+                tableBody.innerHTML = '';
+                let filtered = allTasks;
+                if (prioridade) {
+                    filtered = filtered.filter(task => (task.prioridade || '').toLowerCase() === prioridade);
+                }
+                if (status) {
+                    filtered = filtered.filter(task => String(task.concluido) === status);
+                }
+                filtered.forEach(task => {
+                    const line = document.createElement("tr");
+                    line.setAttribute('data-task-id', task.id);
+                    createColumn(line, task.título);
+                    createColumn(line, task.descricao);
+                    createColumn(line, formatDate(task.prazo));
+                    createColumn(line, formatPriority(task.prioridade));
+                    createColumn(line, formatStatus(task.concluido));
+                    const actionsColumn = document.createElement("td");
+                    actionsColumn.style.cssText = "display: flex; gap: 8px; align-items: center;";
+                    const editButton = document.createElement("button");
+                    editButton.innerText = "Editar";
+                    editButton.style.cssText = "background-color: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
+                    editButton.addEventListener('click', () => openEditModal(task));
+                    const deleteButton = document.createElement("button");
+                    deleteButton.innerText = "Excluir";
+                    deleteButton.style.cssText = "background-color: #dc2626; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;";
+                    deleteButton.addEventListener('click', () => deleteTask(task.id, line));
+                    actionsColumn.appendChild(editButton);
+                    actionsColumn.appendChild(deleteButton);
+                    line.appendChild(actionsColumn);
+                    tableBody.appendChild(line);
+                });
             }
 
             function createColumn(line, text) {
@@ -297,3 +318,12 @@
 
     </div>
 </div>
+
+<style>
+    .filtros-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;      /* aumenta o espaço acima */
+        margin-bottom: 30px;   /* espaço abaixo */
+    }
+</style>
