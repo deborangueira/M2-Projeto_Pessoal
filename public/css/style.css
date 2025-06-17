@@ -829,7 +829,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 24px;
     width: 100%;
-    max-width: 800px;
+    max-width: 400px;
 }
 
 .perfilHeader {
@@ -865,6 +865,7 @@
     color: #333;
     margin: 0 0 8px 0;
     font-size: 24px;
+    text-align: left;
 }
 
 .userEmail {
