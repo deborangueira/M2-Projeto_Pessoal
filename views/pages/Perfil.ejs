@@ -1,58 +1,37 @@
 <div class="containerPerfil">
-    <div class="containerSuperior">
-        <h1>Meu Perfil</h1>
-        <p>Gerencie suas informações pessoais</p>
-    </div>
-
-    <div class="perfilCard">
-        <div class="perfilHeader">
+    <div class="perfilCard">        <div class="perfilHeader">
             <div class="avatarContainer">
                 <div class="avatar">
                     <%= user.nome.charAt(0).toUpperCase() %>
                 </div>
             </div>
-            <h2><%= user.nome %></h2>
-            <p class="userEmail"><%= user.email %></p>
+            <div class="perfilDados">
+                <h2><%= user.nome %></h2>
+                <p class="userEmail"><%= user.email %></p>
+            </div>
         </div>
-
         <div class="perfilInfo">
-            <h3>Informações do Usuário</h3>
-            
+            <h3>Informações do <span class="highlight">Usuário</span></h3>
             <div class="infoGrid">
-                <div class="infoItem">
-                    <label>ID do Usuário:</label>
-                    <span><%= user.id %></span>
-                </div>
-                
                 <div class="infoItem">
                     <label>Nome Completo:</label>
                     <span><%= user.nome %></span>
                 </div>
-                
                 <div class="infoItem">
                     <label>Email:</label>
                     <span><%= user.email %></span>
                 </div>
-                
                 <div class="infoItem">
                     <label>Status:</label>
                     <span class="statusAtivo">Usuário Ativo</span>
                 </div>
             </div>
         </div>
-
         <div class="perfilActions">
-            <h3>Ações da Conta</h3>
-            
             <div class="actionButtons">
                 <button onclick="editProfile()" class="btn-primary">
                     📝 Editar Perfil
                 </button>
-                
-                <button onclick="viewTasks()" class="btn-secondary">
-                    📋 Minhas Tarefas
-                </button>
-                
                 <button onclick="logout()" class="btn-danger">
                     🚪 Sair da Conta
                 </button>
@@ -63,14 +42,6 @@
     <script>
         function editProfile() {
             alert('🚧 Funcionalidade de edição de perfil em desenvolvimento!\n\nEm breve você poderá atualizar suas informações.');
-        }
-
-        function viewTasks() {
-            window.location.href = '/listaAtividades';
-        }
-
-        function createTask() {
-            window.location.href = '/novaAtividade';
         }
 
         async function logout() {

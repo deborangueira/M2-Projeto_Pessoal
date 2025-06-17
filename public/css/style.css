@@ -321,10 +321,9 @@
           }
       
           .containerSuperior h1 {
-              color: #a78bfa;
+              color: #333;
               margin-bottom: 10px;
               font-size: 28px;
-              font-weight: bold;
           }
       
           .containerSuperior p {
@@ -335,121 +334,117 @@
           .perfilCard {
               background: white;
               border-radius: 12px;
-              box-shadow: 0 0 10px rgba(0,0,0,0.05);
-              max-width: 600px;
-              width: 100%;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+              max-width: 800px;
               margin: 0 auto;
               overflow: hidden;
-              margin-bottom: 32px;
           }
       
           .perfilHeader {
-              background: linear-gradient(135deg, #a78bfa, #8b6cf3);
-              color: white;
-              padding: 40px 30px 24px 30px;
-              text-align: center;
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              margin-bottom: 32px;
+              gap: 24px;
           }
       
           .avatarContainer {
-              margin-bottom: 20px;
+              flex-shrink: 0;
           }
       
           .avatar {
               width: 80px;
               height: 80px;
+              background-color: #a78bfa;
+              color: white;
               border-radius: 50%;
-              background-color: rgba(255,255,255,0.2);
               display: flex;
-              align-items: center;
               justify-content: center;
+              align-items: center;
               font-size: 32px;
               font-weight: bold;
-              margin: 0 auto;
-              border: 3px solid rgba(255,255,255,0.3);
           }
       
-          .perfilHeader h2 {
+          .perfilDados {
+              text-align: right;
+          }
+      
+          .perfilDados h2 {
+              color: #333;
+              margin: 0 0 8px 0;
               font-size: 24px;
-              margin-bottom: 8px;
-              font-weight: 600;
           }
       
           .userEmail {
+              color: #666;
+              margin: 0;
               font-size: 16px;
-              opacity: 0.9;
           }
       
           .perfilInfo {
-              padding: 30px;
-              border-bottom: 1px solid #eee;
+              margin-bottom: 32px;
           }
       
           .perfilInfo h3 {
-              color: #a78bfa;
+              color: #333;
               margin-bottom: 20px;
-              font-size: 18px;
-              font-weight: 600;
+              font-size: 20px;
+              border-bottom: 2px solid #f3f4f6;
+              padding-bottom: 12px;
           }
       
           .infoGrid {
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
               gap: 20px;
           }
       
           .infoItem {
-              display: flex;
-              flex-direction: column;
-              gap: 8px;
+              padding: 12px;
+              background-color: #f8f9fa;
+              border-radius: 8px;
           }
       
           .infoItem label {
-              font-weight: 600;
-              color: #555;
+              display: block;
+              color: #666;
+              margin-bottom: 4px;
               font-size: 14px;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
           }
       
           .infoItem span {
-              font-size: 16px;
               color: #333;
-              padding: 8px 0;
+              font-size: 16px;
+              font-weight: 500;
           }
       
           .statusAtivo {
-              color: #10b981 !important;
-              font-weight: 500 !important;
+              color: #16a34a !important;
           }
       
           .perfilActions {
-              padding: 30px;
-          }
-      
-          .perfilActions h3 {
-              color: #a78bfa;
-              margin-bottom: 20px;
-              font-size: 18px;
-              font-weight: 600;
+              border-top: 1px solid #eee;
+              padding-top: 24px;
+              margin-top: 24px;
           }
       
           .actionButtons {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-              gap: 15px;
+              display: flex;
+              justify-content: flex-end;
+              gap: 12px;
           }
       
-          .btn-primary,
-          .btn-secondary,
-          .btn-danger {
-              padding: 12px 20px;
+          .btn-primary, .btn-danger {
+              padding: 10px 20px;
               border: none;
-              border-radius: 8px;
+              border-radius: 6px;
               font-size: 14px;
               font-weight: 500;
               cursor: pointer;
-              transition: all 0.3s ease;
-              text-align: center;
+              transition: all 0.2s ease;
+              display: flex;
+              align-items: center;
+              gap: 8px;
           }
       
           .btn-primary {
@@ -459,52 +454,46 @@
       
           .btn-primary:hover {
               background-color: #8b6cf3;
-              transform: translateY(-2px);
-          }
-      
-          .btn-secondary {
-              background-color: #f3f4f6;
-              color: #374151;
-              border: 1px solid #d1d5db;
-          }
-      
-          .btn-secondary:hover {
-              background-color: #e5e7eb;
-              transform: translateY(-2px);
           }
       
           .btn-danger {
-              background-color: #dc2626;
-              color: white;
+              background-color: #fecaca;
+              color: #dc2626;
           }
       
           .btn-danger:hover {
-              background-color: #b91c1c;
-              transform: translateY(-2px);
+              background-color: #fca5a5;
           }
       
+          /* Responsividade */
           @media (max-width: 768px) {
               .perfilCard {
                   margin: 10px;
               }
+      
               .perfilHeader {
-                  padding: 30px 20px 18px 20px;
+                  padding: 30px 20px;
               }
+      
               .perfilInfo,
               .perfilActions {
                   padding: 20px;
               }
+      
               .infoGrid {
                   grid-template-columns: 1fr;
               }
+      
               .actionButtons {
                   grid-template-columns: 1fr;
               }
+      
               .avatar {
                   width: 60px;
                   height: 60px;
                   font-size: 24px;
               }
+      
               .perfilHeader h2 {
                   font-size: 20px;
               }
@@ -692,4 +681,282 @@
     display: flex;
     justify-content: center;
     margin-bottom: 24px;
+}
+
+/* Perfil - Card centralizado e estilizado */
+.containerPerfil {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+.perfilCard {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 32px 40px;
+    min-width: 340px;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerPerfil .containerSuperior {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.perfilHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    gap: 24px;
+}
+.avatarContainer {
+    flex-shrink: 0;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #a78bfa;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+.perfilDados {
+    text-align: right;
+}
+.perfilDados h2 {
+    color: #333;
+    margin: 0 0 8px 0;
+    font-size: 24px;
+}
+.userEmail {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
+.perfilInfo {
+    margin-bottom: 32px;
+}
+.perfilInfo h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 12px;
+}
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.infoItem {
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+.infoItem label {
+    display: block;
+    color: #666;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+.infoItem span {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+.statusAtivo {
+    color: #16a34a !important;
+}
+.perfilActions {
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+    margin-top: 24px;
+}
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+.btn-primary, .btn-danger {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-primary {
+    background-color: #a78bfa;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #8b6cf3;
+}
+.btn-danger {
+    background-color: #fecaca;
+    color: #dc2626;
+}
+.btn-danger:hover {
+    background-color: #fca5a5;
+}
+
+/* Perfil page styles */
+.containerPerfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+    padding: 20px;
+}
+
+.perfilCard {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.perfilHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    gap: 24px;
+}
+
+.avatarContainer {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #a78bfa;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.perfilDados {
+    text-align: right;
+}
+
+.perfilDados h2 {
+    color: #333;
+    margin: 0 0 8px 0;
+    font-size: 24px;
+}
+
+.userEmail {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
+
+.perfilInfo {
+    margin-bottom: 32px;
+}
+
+.perfilInfo h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 12px;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.infoItem {
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.infoItem label {
+    display: block;
+    color: #666;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.infoItem span {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.statusAtivo {
+    color: #16a34a !important;
+}
+
+.perfilActions {
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+    margin-top: 24px;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-primary, .btn-danger {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background-color: #a78bfa;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8b6cf3;
+}
+
+.btn-danger {
+    background-color: #fecaca;
+    color: #dc2626;
+}
+
+.btn-danger:hover {
+    background-color: #fca5a5;
+}
+
+.highlight {
+    color: #a78bfa;
 }
