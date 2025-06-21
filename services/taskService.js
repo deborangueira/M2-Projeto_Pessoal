@@ -8,7 +8,22 @@ const getAllTask = async () => {
     const result = await db.query('SELECT * FROM atividades');
     return result.rows;
   } catch (error) {
+    if (error.code === 'ECONNRESET' || error.message.includes('Connection terminated')) {
+      throw new Error('Conexão com o banco de dados perdida. Tente novamente em alguns segundos.');
+    }
     throw new Error('Erro ao obter atividades: ' + error.message);
+  }
+};
+
+const getTasksByUserId = async (userId) => {
+  try {
+    const result = await db.query('SELECT * FROM atividades WHERE id_usuario = $1', [userId]);
+    return result.rows;
+  } catch (error) {
+    if (error.code === 'ECONNRESET' || error.message.includes('Connection terminated')) {
+      throw new Error('Conexão com o banco de dados perdida. Tente novamente em alguns segundos.');
+    }
+    throw new Error('Erro ao obter atividades do usuário: ' + error.message);
   }
 };
 
@@ -69,6 +84,7 @@ const deleteTask = async (id) => {
 module.exports = {
     getAllTask,
     getTaskById,
+    getTasksByUserId,
     createTask,
     updateTask,
     deleteTask

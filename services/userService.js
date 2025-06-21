@@ -38,10 +38,20 @@ const createUser = async (nome, email, senha) => {
 // Função para atualizar um usuário por ID
 const updateUser = async (id, nome, email, senha) => {
   try {
-    const result = await db.query(
-      'UPDATE usuario SET nome = $1, email = $2, senha = $3 WHERE id = $4 RETURNING *',
-      [nome, email, senha,id]
-    );
+    let query;
+    let params;
+    
+    if (senha) {
+      // Atualizar com nova senha
+      query = 'UPDATE usuario SET nome = $1, email = $2, senha = $3 WHERE id = $4 RETURNING *';
+      params = [nome, email, senha, id];
+    } else {
+      // Atualizar sem alterar a senha
+      query = 'UPDATE usuario SET nome = $1, email = $2 WHERE id = $3 RETURNING *';
+      params = [nome, email, id];
+    }
+    
+    const result = await db.query(query, params);
     return result.rows[0];
   } catch (error) {
     throw new Error('Erro ao atualizar usuário: ' + error.message);

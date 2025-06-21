@@ -1,32 +1,53 @@
-<div class="containerCriarAtv">
-    <body>
-
-        <br>
-
-        <div>
-            <form action="/task" method="POST" class="adicionarAtividade">
-
-                <input type="título" name="título" id="título" placeholder="título" required>
-                <br>
-                <input type="descricao" name="descricao" id="descricao" placeholder="descrição" required>
-                <br>
-                <input type="date" name="prazo" id="prazo" required>
-                <br>
-                <select name="prioridade" id="prioridade" required>
-                    <option value="N/A">prioridade</option>
-                    <option value="alta">alta</option>
-                    <option value="média">média</option>
-                    <option value="Baixa">Baixa</option>
-                </select>
-                <br>
-                <select name="concluido" id="concluido" required>
-                    <option value="N/A">status</option>
-                    <option value="⚪ A fazer">a fazer</option>
-                    <option value="🟡 Em andamento">em andamento</option>
-                    <option value="🟢 Concluído">concluído</option>
-                </select>
-                <br><br>
-                <button class="btAdicionar" type="submit">Adicionar</button>
+<div class="new-activity-container">
+    <div class="content-wrapper">
+        <h1 class="page-title">📝 Nova Atividade</h1>
+        <p class="page-subtitle">Crie uma nova tarefa para sua lista</p>
+        
+        <div class="card">
+            <form action="/task" method="POST" class="form-container">
+                <div class="form-group">
+                    <label for="título">Título da Atividade</label>
+                    <input type="text" name="título" id="título" placeholder="Digite o título da atividade" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" placeholder="Descreva a atividade" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prazo">Data de Vencimento</label>
+                    <input type="date" name="prazo" id="prazo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prioridade">Prioridade</label>
+                    <select name="prioridade" id="prioridade" required>
+                        <option value="">Selecione a prioridade</option>
+                        <option value="baixa">Baixa</option>
+                        <option value="media">Média</option>
+                        <option value="alta">Alta</option>
+                        <option value="urgente">Urgente</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="concluido">Status</label>
+                    <select name="concluido" id="concluido" required>
+                        <option value="">Selecione o status</option>
+                        <option value="false">Pendente</option>
+                        <option value="true">Concluída</option>
+                    </select>
+                </div>
+                
+                <input type="hidden" name="criado_em" id="criado_em">
+                
+                <button type="submit" class="btn btn-primary btn-full">✅ Adicionar Atividade</button>
             </form>
         </div>
+    </div>
+
+    <script>
+        document.getElementById('criado_em').value = new Date().toISOString();
+    </script>
 </div>

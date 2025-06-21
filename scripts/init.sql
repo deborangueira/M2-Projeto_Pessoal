@@ -16,6 +16,5 @@ CREATE TABLE IF NOT EXISTS atividades ( --task
   concluido VARCHAR(30),
   criado_em TIMESTAMP,
   id_usuario INT,
-  id_categoria INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );

@@ -44,40 +44,42 @@
                     <span class="close" onclick="closeEditModal()">&times;</span>
                 </div>
                 <form id="editForm">
-                    <div class="form-group">
-                        <label for="editTitulo">Título:</label>
-                        <input type="text" id="editTitulo" name="titulo" required maxlength="100">
-                        <div class="error-message" id="tituloError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="editDescricao">Descrição:</label>
-                        <textarea id="editDescricao" name="descricao" rows="3" maxlength="500"></textarea>
-                        <div class="error-message" id="descricaoError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="editPrazo">Data de Vencimento:</label>
-                        <input type="date" id="editPrazo" name="prazo">
-                        <div class="error-message" id="prazoError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="editPrioridade">Prioridade:</label>
-                        <select id="editPrioridade" name="prioridade" required>
-                            <option value="baixa">Baixa</option>
-                            <option value="media">Média</option>
-                            <option value="alta">Alta</option>
-                            <option value="urgente">Urgente</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="editStatus">Status:</label>
-                        <select id="editStatus" name="concluido" required>
-                            <option value="false">Pendente</option>
-                            <option value="true">Concluída</option>
-                        </select>
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="editTitulo">Título:</label>
+                            <input type="text" id="editTitulo" name="titulo" required maxlength="100">
+                            <div class="error-message" id="tituloError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editDescricao">Descrição:</label>
+                            <textarea id="editDescricao" name="descricao" rows="3" maxlength="500"></textarea>
+                            <div class="error-message" id="descricaoError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPrazo">Data de Vencimento:</label>
+                            <input type="date" id="editPrazo" name="prazo">
+                            <div class="error-message" id="prazoError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPrioridade">Prioridade:</label>
+                            <select id="editPrioridade" name="prioridade" required>
+                                <option value="baixa">Baixa</option>
+                                <option value="media">Média</option>
+                                <option value="alta">Alta</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editStatus">Status:</label>
+                            <select id="editStatus" name="concluido" required>
+                                <option value="false">Pendente</option>
+                                <option value="true">Concluída</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
@@ -100,12 +102,17 @@
 
             async function loadTasks() {
                 try {
-                    const response = await fetch("/task");
+                    const response = await fetch("/task/user");
                     allTasks = await response.json();
                     renderFilteredTasks();
                 } catch (error) {
                     console.error('Erro ao carregar tarefas:', error);
-                    alert('Erro ao carregar tarefas');
+                    if (error.status === 401) {
+                        alert('Sessão expirada. Faça login novamente.');
+                        window.location.href = '/login';
+                    } else {
+                        alert('Erro ao carregar tarefas');
+                    }
                 }
             }
 
@@ -268,11 +275,18 @@
 
                     if (response.ok) {
                         closeEditModal();
-                        loadTasks(); // Recarrega a lista de tarefas
+                        loadTasks();
                         alert('Tarefa atualizada com sucesso!');
                     } else {
                         const error = await response.json();
-                        alert(`Erro ao atualizar tarefa: ${error.error || 'Erro desconhecido'}`);
+                        if (response.status === 401) {
+                            alert('Sessão expirada. Faça login novamente.');
+                            window.location.href = '/login';
+                        } else if (response.status === 403) {
+                            alert('Acesso negado: você só pode editar suas próprias atividades.');
+                        } else {
+                            alert(`Erro ao atualizar tarefa: ${error.error || 'Erro desconhecido'}`);
+                        }
                     }
                 } catch (error) {
                     console.error('Erro:', error);
@@ -297,7 +311,17 @@
                         lineElement.remove();
                         alert('Tarefa excluída com sucesso!');
                     } else {
-                        alert('Erro ao excluir a tarefa');
+                        const error = await response.json();
+                        if (response.status === 401) {
+                            alert('Sessão expirada. Faça login novamente.');
+                            window.location.href = '/login';
+                        } else if (response.status === 403) {
+                            alert('Acesso negado: você só pode excluir suas próprias atividades.');
+                        } else if (response.status === 404) {
+                            alert('Atividade não encontrada.');
+                        } else {
+                            alert(`Erro ao excluir tarefa: ${error.error || 'Erro desconhecido'}`);
+                        }
                     }
                 } catch (error) {
                     console.error('Erro:', error);

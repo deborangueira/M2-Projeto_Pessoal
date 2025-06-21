@@ -44,19 +44,64 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
+    
+    // Verificar se o usuário está logado
+    if (!req.session || !req.session.isLoggedIn) {
+      return res.status(401).json({ error: "Acesso negado. Faça login primeiro." });
+    }
+    
+    // Verificar se o usuário está tentando editar o próprio perfil
+    if (req.session.userId !== parseInt(req.params.id)) {
+      return res.status(403).json({ error: "Acesso negado. Você só pode editar seu próprio perfil." });
+    }
+    
+    // Validações frontend
+    if (!nome || nome.trim().length < 3) {
+      return res.status(400).json({ error: "Nome é obrigatório e deve ter pelo menos 3 caracteres." });
+    }
+    
+    // Validação de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return res.status(400).json({ error: "Email deve ter um formato válido." });
+    }
+    
+    // Validação de senha (opcional)
+    if (senha && senha.length < 6) {
+      return res.status(400).json({ error: "Senha deve ter pelo menos 6 caracteres." });
+    }
+    
+    // Verificar se email já existe para outro usuário
+    const existingUser = await userService.getUserByEmail(email);
+    if (existingUser && existingUser.id !== parseInt(req.params.id)) {
+      return res.status(400).json({ error: "Este email já está sendo usado por outro usuário." });
+    }
+    
     const updatedUser = await userService.updateUser(
       req.params.id,
-      nome,
-      email,
-      senha
+      nome.trim(),
+      email.toLowerCase().trim(),
+      senha || null
     );
+    
     if (updatedUser) {
-      res.status(200).json(updatedUser);
+      // Atualizar dados da sessão
+      req.session.userName = updatedUser.nome;
+      req.session.userEmail = updatedUser.email;
+      
+      // Retornar dados sem a senha
+      const { senha: _, ...userWithoutPassword } = updatedUser;
+      res.status(200).json({
+        sucesso: true,
+        message: "Perfil atualizado com sucesso!",
+        user: userWithoutPassword
+      });
     } else {
       res.status(404).json({ error: "Usuário não encontrado" });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Erro ao atualizar usuário:', error);
+    res.status(500).json({ error: "Erro interno do servidor" });
   }
 };
 

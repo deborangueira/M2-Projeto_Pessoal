@@ -1,5 +1,3 @@
-
-
 const { Pool } = require('pg'); // conecção com o banco de dados postgrees
 require('dotenv').config();
 
@@ -15,7 +13,24 @@ const pool = new Pool({
   ssl: isSSL ? { rejectUnauthorized: false } : false,
 });
 
+pool.on('error', (err, client) => {
+  console.error('Erro na conexão com o banco de dados:', err);
+  console.log('Tentando reconectar ao banco de dados...');
+});
+
+pool.on('connect', () => {
+  console.log('Nova conexão estabelecida com o banco de dados');
+});
+
 module.exports = {
-  query: (text, params) => pool.query(text, params),
+  query: async (text, params) => {
+    try {
+      return await pool.query(text, params);
+    } catch (error) {
+      console.error('Erro na query:', error.message);
+      throw error;
+    }
+  },
   connect: () => pool.connect(),
+  pool: pool
 };

@@ -1,24 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-
-// Middleware para verificar autenticação
-const requireAuth = (req, res, next) => {
-  if (req.session && req.session.isLoggedIn) {
-    return next();
-  } else {
-    return res.redirect('/login');
-  }
-};
-
-// Middleware para redirecionar usuários logados
-const redirectIfLoggedIn = (req, res, next) => {
-  if (req.session && req.session.isLoggedIn) {
-    return res.redirect('/listaAtividades');
-  } else {
-    return next();
-  }
-};
+const { requireAuthRedirect, redirectIfLoggedIn } = require('../middleware/auth');
 
 // Roteamento para páginas dinâmicas
 
@@ -46,7 +29,7 @@ router.get('/login', redirectIfLoggedIn, (req, res) => {
   });
 });
 
-router.get('/listaAtividades', requireAuth, (req, res) => {
+router.get('/listaAtividades', requireAuthRedirect, (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
     pageTitle: 'Minhas atividades',
     content: path.join(__dirname, '../views/pages/listaAtividades'),
@@ -58,7 +41,7 @@ router.get('/listaAtividades', requireAuth, (req, res) => {
   });
 });
 
-router.get('/novaAtividade', requireAuth, (req, res) => {
+router.get('/novaAtividade', requireAuthRedirect, (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
     pageTitle: 'Adicionar atividades',
     content: path.join(__dirname, '../views/pages/novaAtividade'),
@@ -70,7 +53,7 @@ router.get('/novaAtividade', requireAuth, (req, res) => {
   });
 });
 
-router.get('/perfil', requireAuth, (req, res) => {
+router.get('/perfil', requireAuthRedirect, (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
     pageTitle: 'Meu perfil',
     content: path.join(__dirname, '../views/pages/Perfil'),

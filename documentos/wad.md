@@ -125,9 +125,7 @@ CREATE TABLE IF NOT EXISTS atividades ( --task
   concluido BOOLEAN,
   criado_em TIMESTAMP,
   id_usuario INT,
-  id_categoria INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-  FOREIGN KEY (id_categoria) REFERENCES categoria(id)
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
 
@@ -167,7 +165,7 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
 
 4. **Task Service**
    - Responsável pelo gerenciamento de atividades
-   - Atributos: id, título, descrição, prazo, prioridade, concluido, criado_em, id_usuário, id_categoria, id_projeto.
+   - Atributos: id, título, descrição, prazo, prioridade, concluido, criado_em, id_usuário.
    - Métodos principais:
      - `getAllTask`: Busca todas as atividades
      - `getTaskById`: busca atividade por ID
@@ -239,10 +237,10 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 
 | Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
 | ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/task`     | Criar uma nova atividade      | Corpo JSON: `{ id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto }`                                                  |
+| POST   | `/task`     | Criar uma nova atividade      | Corpo JSON: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario }`                                                  |
 | GET    | `/task`     | Listar todas as atividades   | -                                                                                                                              |
-| GET    | `/task/:id` | Buscar atividade pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
-| PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario, id_categoria, id_projeto}` |
+| GET    | `/task/:id` | Buscar atividade pelo ID     | Parâmetro URL: `id` (ID da atividade)                                                                                            |
+| PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido }` |
 | DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
 
 ### 3.7 Interface e Navegação (Semana 07)
