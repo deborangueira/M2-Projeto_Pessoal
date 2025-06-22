@@ -2,7 +2,6 @@
 
 const db = require('../config/db');
 
-// Função para obter todos as atividades
 const getAllTask = async () => {
   try {
     const result = await db.query('SELECT * FROM atividades');
@@ -27,7 +26,6 @@ const getTasksByUserId = async (userId) => {
   }
 };
 
-// Função para obter uma atividade por ID
 const getTaskById = async (id) => {
   try {
     const result = await db.query('SELECT * FROM atividades WHERE id = $1', [id]);
@@ -37,7 +35,6 @@ const getTaskById = async (id) => {
   }
 };
 
-// Função para criar um nova atividade
 const createTask = async ( título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) => {
   try {
     const result = await db.query(
@@ -50,7 +47,6 @@ const createTask = async ( título, descricao, prazo, prioridade, concluido, cri
   }
 };
 
-// Função para atualizar uma atividade por ID
 const updateTask = async (id, título, descricao, prazo, prioridade, concluido, criado_em, id_usuario) => {
   try {
     // Adiciona timestamp de atualização

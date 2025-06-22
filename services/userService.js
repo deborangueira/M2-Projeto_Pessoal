@@ -2,7 +2,6 @@
 
 const db = require('../config/db');
 
-// Função para obter todos os usuários
 const getAllUsers = async () => {
   try {
     const result = await db.query('SELECT * FROM usuario');
@@ -12,7 +11,6 @@ const getAllUsers = async () => {
   }
 };
 
-// Função para obter um usuário por ID
 const getUserById = async (id) => {
   try {
     const result = await db.query('SELECT * FROM usuario WHERE id = $1', [id]);
@@ -22,7 +20,6 @@ const getUserById = async (id) => {
   }
 };
 
-// Função para criar um novo usuário
 const createUser = async (nome, email, senha) => {
   try {
     const result = await db.query(
@@ -35,7 +32,6 @@ const createUser = async (nome, email, senha) => {
   }
 };
 
-// Função para atualizar um usuário por ID
 const updateUser = async (id, nome, email, senha) => {
   try {
     let query;
@@ -58,7 +54,6 @@ const updateUser = async (id, nome, email, senha) => {
   }
 };
 
-// Função para deletar um usuário por ID
 const deleteUser = async (id) => {
   try {
     const result = await db.query('DELETE FROM usuario WHERE id = $1 RETURNING *', [id]);
@@ -68,7 +63,6 @@ const deleteUser = async (id) => {
   }
 };
 
-// Função para autenticar usuário (login simples)
 const authenticateUser = async (email, senha) => {
   try {
     const result = await db.query('SELECT * FROM usuario WHERE email = $1 AND senha = $2', [email, senha]);
@@ -78,7 +72,6 @@ const authenticateUser = async (email, senha) => {
   }
 };
 
-// Função para buscar usuário por email
 const getUserByEmail = async (email) => {
   try {
     const result = await db.query('SELECT * FROM usuario WHERE email = $1', [email]);

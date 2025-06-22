@@ -24,8 +24,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-// IMPLEMENTAÇÃO DO CRUD
-
 const createUser = async (req, res) => {
   try {
     const { nome, email, senha } = req.body;

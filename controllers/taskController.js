@@ -45,8 +45,6 @@ const getTaskById = async (req, res) => {
   }
 };
 
-// IMPLEMENTAÇÃO DO CRUD
-
 const createTask = async (req, res) => {
   try {
     if (!req.session || !req.session.userId) {
