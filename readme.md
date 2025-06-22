@@ -128,21 +128,21 @@ Acesse a documentação técnica completa em: [Web Application Document (WAD)](h
 
 ### Páginas de login e cadastro
 
-![login](assets/PrintScreen/login.png)
+![login](assets/PrintScreen/login.png)  
 ![cadastro](assets/PrintScreen/cadastro.png)
 
-### Lista de atividades
+### Lista de tarefas  
 
 ![login](assets/PrintScreen/listaAtividades.png)
 
-### Criar nova atividade
+### Criar nova tarefa  
 ![login](assets/PrintScreen/novaAtividade.png)
 
-### Aditar atividade
+### Atualizar informações da tarefa   
 ![login](assets/PrintScreen/atualizarAtividade.png)
 
-### Perfil
-![login](assets/PrintScreen/perfil.png)
+### Perfil  
+![login](assets/PrintScreen/perfil.png)  
 
 ## Arquitetura MVC utilizada
 - Model `(models/)`: Lógica de negócios e acesso a dados
