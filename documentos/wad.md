@@ -10,7 +10,7 @@
 
 <br>
 
-## <a name="c1"></a>1. Introdução (Semana 01)
+## <a name="c1"></a>1. Introdução
 
 Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades** para que os usuários tenham um maior controle de sua agenda, desde a organização ao acompanhamento do progresso dessas atividades diariamente, tendo como foco as ferramentas mais essenciais para tal. 
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS atividades ( --task
 
 ---
 
-### 3.1.1 BD e Models (Semana 5)
+### 3.1.1 BD e Models
 Foi implementado 5 models (services) conforme a estrutura definida no banco de dados PostgreSQL.São eles:
 
 1. **User Service**
@@ -153,7 +153,7 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
      - `deleteTask`: Remove atividade do sistema
 
 
-### 3.2. Arquitetura (Semana 5)
+### 3.2. Arquitetura
 
 Para essa aplicação, a arquitetura MVC foi implementada da seguinte maneira:
 
@@ -163,7 +163,7 @@ Para essa aplicação, a arquitetura MVC foi implementada da seguinte maneira:
 
  O **model** é responsável pela lógica de negócios e interação com o banco de dados via Supabase. Ao se comunicar com o servidor do banco de dados (PostgreeSQL), o model é capaz de realizar as operações solicitadas pelo controller. No que se refere ao **controller**, ele é a camada intermediária entre model e view, sendo responsável por receber as requisições HTTP, processa-las de acordo com as funções disponíveis e chamar o model correspondente para acessar os dados no banco. Com isso, é possível que haja atualizações tanto no model quanto nos controllers. Além disso, é essencial para configuração das rotas. Já a **view** estabelece a interface do usuário na aplicação e é responsável por enviar as requisições HTTP para o controller como por exemplo: "`GET/users`" e "`PUT/users/:id`"
 
-### 3.3. Wireframes (Semana 03)
+### 3.3. Wireframes 
 
 ![Wireframe-tela login e inicial](../assets/Wireframe_1.jpg)
 ![Wireframe-tela configurações e projetos](../assets/Wireframe_2.jpg)
@@ -181,16 +181,16 @@ A terceira tela contém uma lista de todas as atividades cadastradas pelo usuár
 
 Por outro lado, enquanto a tela de configurações-perfil permite a edição de informações pessoais de Log-in, a de configurações-Categorias permite que sejam criadas e editadas tags que servem como organizadores das atividades, podendo ser definidas de forma individual pelo usuário. Por conta disso, esta tela em específico se relaciona com a segunda user story.
 
-### 3.4. Guia de estilos (Semana 05)
+### 3.4. Guia de estilos
 
 *Em brece, estarão aqui orientações gerais para sobre como utilizar os componentes do guia de estilos de sua solução.*
 
 
-### 3.5. Protótipo de alta fidelidade (Semana 05)
+### 3.5. Protótipo de alta fidelidade
 
 *Em breve estarão aqui algumas imagens demonstrativas do protótipo de alta fidelidade e o link para acesso ao protótipo completo.*
 
-### 3.6. WebAPI e endpoints (Semana 05)
+### 3.6. WebAPI e endpoints
 
  #### Usuario
 
@@ -213,12 +213,12 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 | DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
 
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Demonstração do Sistema Web
 
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+### 4.2 Conclusões e Trabalhos Futuros
 
 
 
