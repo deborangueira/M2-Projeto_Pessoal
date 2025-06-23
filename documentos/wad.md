@@ -14,7 +14,7 @@
 
 Esse projeto tem como objetivo o desenvolvimento de uma **aplicação web para gerenciamento de atividades** para que os usuários tenham um maior controle de sua agenda, desde a organização ao acompanhamento do progresso dessas atividades diariamente, tendo como foco as ferramentas mais essenciais para tal. 
 
-Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição, e prazo de conclusão. Além disso, as atividades também podem ser categorizadas de acordo com as áreas da vida de cada usuário (como acadêmica, saúde e vida pessoal).  Isto proporciona uma visão clara e estruturada das responsabilidades.que o usuário tem.
+Para isso, a aplicação permite que os usuários criem uma conta, façam login e adicionem atividades com informações detalhadas, como título, descrição, e prazo de conclusão. Isto proporciona uma visão clara e estruturada das responsabilidades.que o usuário tem.
 
 Por fim, é possível realizar a edição e exclusão de atividades, garantindo flexibilidade e controle para que os usuários mantenham seu planejamento sempre atualizado.
 
@@ -31,7 +31,7 @@ Por fim, é possível realizar a edição e exclusão de atividades, garantindo 
 
 US01 | **Como** universitário, **quero** adicionar informações essenciais das minhas atividades **para que** eu não perca de vista prazos e detalhes importantes sobre elas
 
-US02 | **Como** estagiário no banco, **quero** categorizar minhas atividades por áreas da vida **para que** eu possa visualizar a distribuição do meu tempo e evitar que eu me sobrecarregue
+US02 | **Como** estagiário no banco, **quero** editar minhas informações pessoais **para que** eu possa atualiza-las com facilidade caso sinta a necessidade
 
 US03 | **Como** estudante, **quero** gerenciar minhas atividades com rapidez **para que** minha transição para o digital seja fluida e fácil.
 
@@ -84,15 +84,11 @@ A plataforma foi desenvolvida utilizando trÊs bancos de dados principais que ar
 - `usuario_id`: FK para usuarios
 - `categoria_id`: FK para categoria` 
 
-**categorias**
-- `id`: Identificador único do usuário (PK)
-- `título_categoria`: nome da categoria
-- `descricao`: detalhamento para entender o que ela inclui.
+
 
 **4. Cardinalidade das Relações**
  
 - **Usuário → Atividades**: Um usuário pode ter várias atividades **1:N**. 
-- **Projetos → Atividades**: Um projeto pode conter várias atividades **1:N**
 
 **5. Modelo Físico – Schema do Banco de Dados**
 
@@ -106,13 +102,6 @@ CREATE TABLE IF NOT EXISTS usuario ( --user
   nome VARCHAR(50) NOT NULL,
   email VARCHAR(200),
   senha VARCHAR(200)
-);
-
--- ciaração da tabela de categorias
-CREATE TABLE IF NOT EXISTS categoria ( --category
-  id SERIAL PRIMARY KEY,
-  titulo_categoria VARCHAR(100) NOT NULL,
-  descricao TEXT
 );
 
 -- criação da tabela de atividades
@@ -152,16 +141,6 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
      - `createUser`: Cria novo usuário
      - `updateUser`: Atualiza dados do usuário
      - `deleteUser`: Remove usuário do sistema
-
-2. **Category Service**
-   - Responsável pelo gerenciamento de categorias.
-   - Atributos: id, título e descrição.
-   - Métodos principais:
-     - `getAllCategory`: Busca todas as categorias
-     - `getCategoryById`: busca categoria por ID
-     - `createCategory`: Cria novo categoria
-     - `updateCategory`: Atualiza dados da categoria
-     - `deleteCategory`: Remove categoria do sistema
 
 4. **Task Service**
    - Responsável pelo gerenciamento de atividades
@@ -204,12 +183,12 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 
 ### 3.4. Guia de estilos (Semana 05)
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+*Em brece, estarão aqui orientações gerais para sobre como utilizar os componentes do guia de estilos de sua solução.*
 
 
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+*Em breve estarão aqui algumas imagens demonstrativas do protótipo de alta fidelidade e o link para acesso ao protótipo completo.*
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
@@ -223,16 +202,6 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 | PUT    | `/user/:id` | Atualizar dados do usuário identificando-o pelo ID | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ nome, email, senha }` |
 | DELETE | `/user/:id` | Deletar usuário pelo ID    | Parâmetro URL: `id`                                                                                                            |
 
- #### categoria
-
-| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
-| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/category`     | Criar uma nova categoria      | Corpo JSON: `{ id, título_categoria, descricao }`                                                  |
-| GET    | `/category`     | Listar todas as categorias   | -                                                                                                                              |
-| GET    | `/category/:id` | Buscar categoria pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
-| PUT    | `/category/:id` | Atualizar dados da categoria | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título_categoria, descricao }` |
-| DELETE | `/category/:id` | Deletar categoria pelo ID    | Parâmetro URL: `id`  
-
  #### Atividades
 
 | Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
@@ -243,29 +212,33 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 | PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido }` |
 | DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
 
-### 3.7 Interface e Navegação (Semana 07)
-
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
-
----
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
 
 
 
 ## <a name="c5"></a>5. Referências
 
-_Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
+**Express.js Documentation**  
+_Express - Fast, unopinionated, minimalist web framework for Node.js_  
+Disponível em: https://expressjs.com/  
+Acesso em: 19 jun. 2025.
+
+**PostgreSQL Documentation**  
+_PostgreSQL: The World's Most Advanced Open Source Database_  
+Disponível em: https://www.postgresql.org/docs/  
+Acesso em: 19 jun. 2025.
+
+**EJS Template Engine**  
+_EJS -- Embedded JavaScript templating_  
+Disponível em: https://ejs.co/  
+Acesso em: 19 jun. 2025.
 
 ---
 ---
