@@ -1,5 +1,5 @@
 # Descrição do projeto
-O SmartTasks é um sistema web desenvolvido para gerenciar atividades de forma prática e organizada. Após o login, o usuário é direcionado para a tela principal e poderá ver sua lista completa de afazeres bem como adicionar novas atividades, edita-las ou remove-las. Ao criar atividades é possível adicionar informações detalhadas, incluindo título, descrição e data de conclusão esperada.
+O SmartTasks é um sistema web desenvolvido para gerenciar atividades. Após o login, o usuário é direcionado para a tela principal e poderá ver sua lista completa de afazeres bem como adicionar novas atividades, edita-las ou remove-las. Ao criar atividades é possível adicionar informações detalhadas, incluindo título, descrição e data de conclusão esperada.
 
 ## Tecnologias Utilizadas
 
