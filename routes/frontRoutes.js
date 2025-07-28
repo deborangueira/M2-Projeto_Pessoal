@@ -7,7 +7,7 @@ const { requireAuthRedirect, redirectIfLoggedIn } = require('../middleware/auth'
 
 router.get('/', redirectIfLoggedIn, (req, res) => {
     res.render(path.join(__dirname, '../views/layout/main'), {
-        pageTitle: 'Login no SmartTasks',
+        pageTitle: 'Bem vido(a) ao SmartTasks',
         content: path.join(__dirname, '../views/pages/login'),
         user: null
     });
@@ -23,7 +23,7 @@ router.get('/cadastro', redirectIfLoggedIn, (req, res) => {
 
 router.get('/login', redirectIfLoggedIn, (req, res) => {
   res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'Login no SmartTasks',
+    pageTitle: 'SmartTasks',
     content: path.join(__dirname, '../views/pages/login'),
     user: null
   });

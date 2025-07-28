@@ -185,20 +185,20 @@ main {
 
 .btn-cancel {
     background-color: #f3f4f6;
-    color: rgb(13, 13, 13);
+    color: rgb(169, 11, 11);
 }
 
 .btn-cancel:hover {
-    color: rgb(215, 37, 37);
+    color: rgb(250, 4, 4);
 }
 
 .btn-save {
     background-color: var(--primary-color);
-    color: rgb(13, 13, 13);
+    color: rgb(204, 16, 166);
 }
 
 .btn-save:hover {
-    color: rgb(215, 37, 215);
+    color: rgb(255, 0, 255);
 }
 
 .btn-full {

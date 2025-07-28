@@ -241,7 +241,6 @@
                 }
             } catch (error) {
                 console.error('Erro:', error);
-                alert('Erro de conectividade. Verifique sua conexão e tente novamente.');
             }
         });
 
@@ -258,7 +257,6 @@
                     const data = await response.json();
                     
                     if (data.sucesso) {
-                        alert('Logout realizado com sucesso!');
                         window.location.href = '/login';
                     } else {
                         alert('Erro ao fazer logout');
