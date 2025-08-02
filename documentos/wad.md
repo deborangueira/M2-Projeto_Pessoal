@@ -60,7 +60,7 @@ US01 | **Como** universitário, **quero** adicionar informações essenciais das
 
 **1. Introdução**
 
-A plataforma foi desenvolvida utilizando trÊs bancos de dados principais que armazenam as informações sobre os usuários, atividades, sub-atividades, projetos e as categorias. 
+A plataforma foi desenvolvida utilizando dois bancos de dados principais que armazenam as informações sobre os usuários e as atividades. 
 
 **2. Diagrama Lógico do Banco de Dados**
 
@@ -72,6 +72,7 @@ A plataforma foi desenvolvida utilizando trÊs bancos de dados principais que ar
 - `id`: Identificador único do usuário (PK)
 - `nome`: Nome do usuário 
 - `email`: email do usuário (único)
+- `senha`: para autenticação do usuário
 
 **Atividades**
 - `id`: Identificador único (PK)
@@ -130,7 +131,7 @@ CREATE TABLE IF NOT EXISTS atividades ( --task
 ---
 
 ### 3.1.1 BD e Models
-Foi implementado 5 models (services) conforme a estrutura definida no banco de dados PostgreSQL.São eles:
+Foi implementado 2 models (services) conforme a estrutura definida no banco de dados PostgreSQL.São eles:
 
 1. **User Service**
    - Responsável pelo gerenciamento de usuários.
@@ -141,8 +142,10 @@ Foi implementado 5 models (services) conforme a estrutura definida no banco de d
      - `createUser`: Cria novo usuário
      - `updateUser`: Atualiza dados do usuário
      - `deleteUser`: Remove usuário do sistema
+     - `authenticateUser`: autenticação do usuário no site
+     - `getUserByEmail`: identificar se o email está cadastrado no sistema
 
-4. **Task Service**
+2. **Task Service**
    - Responsável pelo gerenciamento de atividades
    - Atributos: id, título, descrição, prazo, prioridade, concluido, criado_em, id_usuário.
    - Métodos principais:
@@ -183,7 +186,7 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 
 ### 3.4. Guia de estilos
 
-*Em brece, estarão aqui orientações gerais para sobre como utilizar os componentes do guia de estilos de sua solução.*
+*Em breve, estarão aqui orientações gerais para sobre como utilizar os componentes do guia de estilos*
 
 
 ### 3.5. Protótipo de alta fidelidade
