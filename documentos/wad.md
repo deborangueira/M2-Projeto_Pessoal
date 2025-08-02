@@ -197,23 +197,30 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 
  #### Usuario
 
-| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
-| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/user`     | Criar um novo usuário      | Corpo JSON: `{ id, nome, email, senha }`                                                  |
-| GET    | `/user`     | Listar todos os usuários   | -                                                                                                                              |
-| GET    | `/user/:id` | Buscar usuário pelo ID     | Parâmetro URL: `id` (ID do usuário)                                                                                            |
-| PUT    | `/user/:id` | Atualizar dados do usuário identificando-o pelo ID | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ nome, email, senha }` |
-| DELETE | `/user/:id` | Deletar usuário pelo ID    | Parâmetro URL: `id`                                                                                                            |
+| Método | Endpoint           | Descrição                                           | Parâmetros / Corpo                                                                                         |
+|--------|--------------------|-----------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| POST   | `/user`            | Login de usuário                                    | Corpo JSON: `{ email, senha }`                                                                            |
+| POST   | `/user/register`   | Criar um novo usuário                               | Corpo JSON: `{ id, nome, email, senha }`                                                                  |
+| POST   | `/user/logout`     | Logout do usuário                                   | Requer sessão/autenticação ativa (sem corpo necessário)                                                   |
+| GET    | `/user`            | Listar todos os usuários                            | -                                                                                                          |
+| GET    | `/user/:id`        | Buscar usuário pelo ID                              | Parâmetro URL: `id` (ID do usuário)                                                                        |
+| GET    | `/user/auth/check` | Verificar se o usuário está autenticado             | Requer sessão/autenticação ativa (sem corpo necessário)                                                   |
+| PUT    | `/user/:id`        | Atualizar dados do usuário identificado pelo ID     | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ nome, email, senha }`                      |
+| DELETE | `/user/:id`        | Deletar usuário pelo ID                             | Parâmetro URL: `id`                                                                                        |
+                                                                                                            |
 
  #### Atividades
 
-| Método | Endpoint        | Descrição                  | Parâmetros / Corpo                                                                                                             |
-| ------ | --------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| POST   | `/task`     | Criar uma nova atividade      | Corpo JSON: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario }`                                                  |
-| GET    | `/task`     | Listar todas as atividades   | -                                                                                                                              |
-| GET    | `/task/:id` | Buscar atividade pelo ID     | Parâmetro URL: `id` (ID da atividade)                                                                                            |
-| PUT    | `/task/:id` | Atualizar dados das atividades | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido }` |
-| DELETE | `/task/:id` | Deletar atividade pelo ID    | Parâmetro URL: `id`  
+| Método | Endpoint        | Descrição                                      | Parâmetros / Corpo                                                                                                             |
+|--------|-----------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| POST   | `/task`         | Criar uma nova atividade                       | Corpo JSON: `{ título, descricao, prazo, prioridade, concluido, criado_em, id_usuario }`                                     |
+| GET    | `/task`         | Listar todas as atividades                     | Requer autenticação                                                                                                          |
+| GET    | `/task/user`    | Listar atividades do usuário autenticado       | Requer autenticação (usuário identificado pela sessão ou token)                                                             |
+| GET    | `/task/:id`     | Buscar atividade pelo ID                       | Parâmetro URL: `id` (ID da atividade)                                                                                        |
+| PUT    | `/task/:id`     | Atualizar dados da atividade                   | Parâmetro URL: `id` <br> Corpo JSON: campos a atualizar, ex: `{ título, descricao, prazo, prioridade, concluido }`          |
+| DELETE | `/task/:id`     | Deletar atividade pelo ID                      | Parâmetro URL: `id`                                                                                                          |
+
+> ⚠️ **Observação**: Todos os endpoints acima utilizam o middleware `requireAuth`, ou seja, exigem que o usuário esteja autenticado para acessar as rotas.
 
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web
@@ -221,10 +228,10 @@ Por outro lado, enquanto a tela de configurações-perfil permite a edição de 
 ### 4.1 Demonstração do Sistema Web
 
 
+
 ### 4.2 Conclusões e Trabalhos Futuros
 
-
-
+Como próximos passos para a evolução dessa aplicação estão funcionalidades como a **criação de projetos**. Isso permitirá agrupar tarefas sob objetivos maiores e acompanhar o progresso de forma mais estruturada. Com essa melhoria, os usuários poderão visualizar o avanço geral em direção a metas amplas, indo além da simples gestão de tarefas isoladas. Também está previsto o desenvolvimento de diferentes formas de visualização, como quadros no estilo **Kanban**, que facilitarão o entendimento do fluxo de trabalho. Outras melhorias incluem  a gestão de **categorias**, para classificar e organizar atividades com mais eficiência, e a introdução de **listas expansíveis** ("toggled lists") que detalham subtarefas — facilitando o acompanhamento de pequenas ações necessárias para concluir tarefas maiores. Essas funcionalidades visam tornar o sistema mais completo, flexível e adaptável às rotinas.
 
 ## <a name="c5"></a>5. Referências
 
